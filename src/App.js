@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { getFormValues } from 'redux-form';
 import { connect } from 'react-redux';
 
+import './theme/App.css';
 import Chart from './components/Chart';
 import MainForm from './components/MainForm';
 import PortfoliosReturn from './calculations/PortfoliosReturn';
@@ -24,9 +25,11 @@ class App extends Component {
   render() {
     console.log(this.props);
     return (
-      <div>
-        <Chart data={this.result()} />
-        <MainForm />
+      <div style={styles.container}>
+        <div style={styles.innerContainer}>
+          <Chart data={this.result()} />
+          <MainForm />
+        </div>
       </div>
     );
   }
@@ -35,3 +38,15 @@ class App extends Component {
 export default connect(state => ({
   inputs: getFormValues('mainForm')(state) || {},
 }))(App);
+
+const styles = {
+  container: {
+    backgroundImage: 'url("bg.png")',
+    backgroundSize: 'cover',
+    minHeight: '100vh',
+    minWidth: '100vw',
+  },
+  innerContainer: {
+    padding: '100px',
+  },
+};

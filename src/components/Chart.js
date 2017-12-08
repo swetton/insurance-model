@@ -7,26 +7,53 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from 'recharts';
+import numeral from 'numeral';
 
-class Chart extends Component {
+import colors from '../theme/colors';
+
+export default class Chart extends Component {
   render() {
     const {
       data,
     } = this.props;
 
     return (
-      <LineChart width={600} height={300} data={data}>
-         <XAxis dataKey='age'/>
-         <YAxis/>
-         <CartesianGrid strokeDasharray='3 3'/>
-         <Tooltip/>
-         <Legend />
-         <Line type='monotone' dataKey='portfoliosReturn' stroke='#8884d8' activeDot={{r: 8}}/>
-         <Line type='monotone' dataKey='mutualFundsReturn' stroke='#82ca9d' />
-      </LineChart>
+      <div style={styles.container}>
+        <ResponsiveContainer>
+          <LineChart data={data} margin={{ top: 10, right: 10, bottom: 10, left: 50 }}>
+             <XAxis
+               name='Age'
+               dataKey='age'
+               minTickGap={30}
+               padding={{ left: 30, right: 30 }}
+               interval='preserveStartEnd'
+             />
+             <YAxis
+               tickFormatter={(val) => numeral(val).format('$0,0')}
+             />
+             <CartesianGrid strokeDasharray='3 3'/>
+             <Tooltip
+               formatter={(val) => numeral(val).format('$0,0')}
+             />
+             <Legend
+               margin={{ top: 20 }}
+             />
+             <Line type='monotone' name='Our Plan' dataKey='portfoliosReturn' stroke='#2F5DEA' />
+             <Line type='monotone' name='Mutual Funds' dataKey='mutualFundsReturn' stroke='#E75854' />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     );
   }
 }
 
-export default Chart;
+const styles = {
+  container: {
+    backgroundColor: colors.white,
+    width: '100%',
+    height: '60vh',
+    margin: '0 auto',
+  },
+};

@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import _ from 'lodash';
+import colors from '../theme/colors';
 
-const number = (value) => value && _.parseInt(value);
+const number = (value) => value && Number(value);
 
 class MainForm extends Component {
   render() {
     return (
-      <div>
+      <div style={styles.container}>
         Main Form
 
         <div>
           <label htmlFor='initialInvestment'>Initial Investment</label>
           <Field
             name='initialInvestment'
+            component='input'
+            type='text'
+            normalize={number}
+          />
+        </div>
+
+        <div>
+          <label htmlFor='pacMonth'>PAC / Month</label>
+          <Field
+            name='pacMonth'
             component='input'
             type='text'
             normalize={number}
@@ -44,3 +54,10 @@ export default reduxForm({
     initialInvestment: 75000,
   },
 })(MainForm);
+
+const styles = {
+  container: {
+    backgroundColor: colors.white,
+    margin: '0 auto',
+  },
+};
