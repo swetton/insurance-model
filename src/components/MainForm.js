@@ -1,34 +1,81 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+
 import colors from '../theme/colors';
 
-const number = (value) => value && Number(value);
+import CurrencyField from './CurrencyField';
+import NumberField from './NumberField';
+import PercentField from './PercentField';
+import CheckboxField from './CheckboxField';
 
 class MainForm extends Component {
   render() {
     return (
       <div style={styles.container}>
-        Main Form
+        <CurrencyField
+          name='initialInvestment'
+          label='Initial Investment'
+        />
 
-        <div>
-          <label htmlFor='initialInvestment'>Initial Investment</label>
-          <Field
-            name='initialInvestment'
-            component='input'
-            type='text'
-            normalize={number}
-          />
-        </div>
+        <CurrencyField
+          name='pacMonth'
+          label='PAC / Month'
+        />
 
-        <div>
-          <label htmlFor='pacMonth'>PAC / Month</label>
-          <Field
-            name='pacMonth'
-            component='input'
-            type='text'
-            normalize={number}
-          />
-        </div>
+        <CurrencyField
+          name='primaryCiAmount'
+          label='Primary CI Amount'
+        />
+
+        <CurrencyField
+          name='secondaryCiAmount'
+          label='Secondary CI Amount'
+        />
+
+        <NumberField
+          name='currentAge'
+          label='Current Age'
+        />
+
+        <NumberField
+          name='retirementAge'
+          label='Retirement Age'
+        />
+
+        <PercentField
+          name='portfoliosFees'
+          label='Portfolios Fees'
+        />
+
+        <PercentField
+          name='mutualFundsFees'
+          label='Mutual Fund Fees'
+        />
+
+        <PercentField
+          name='rateOfReturn'
+          label='Avg Rate of Return'
+        />
+
+        <CheckboxField
+          name='includePrimaryCiInsurance'
+          label='Include Primary CI Insurance'
+        />
+
+        <CheckboxField
+          name='includeSecondaryCiInsurance'
+          label='Include Secondary CI Insurance'
+        />
+
+        <CheckboxField
+          name='primaryIllness'
+          label='Primary Illness'
+        />
+
+        <CheckboxField
+          name='secondaryIllness'
+          label='Secondary Illness'
+        />
       </div>
     );
   }
