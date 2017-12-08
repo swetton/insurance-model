@@ -4,6 +4,7 @@ import _ from 'lodash';
 import Chart from './components/Chart';
 import MainForm from './components/MainForm';
 import PortfoliosReturn from './calculations/PortfoliosReturn';
+import MutualFundsReturn from './calculations/MutualFundsReturn';
 
 class App extends Component {
   ages() {
@@ -20,6 +21,7 @@ class App extends Component {
       secondaryIllness: true,
       rateOfReturn: 0.05,
       portfoliosFees: 0.005,
+      mutualFundsFees: 0.023,
       includePrimaryCiInsurance: true,
       primaryCiCost: 33,
       includeSecondaryCiInsurance: true,
@@ -33,9 +35,7 @@ class App extends Component {
     return _.map(this.ages(), (age) => ({
       age,
       portfoliosReturn: _.round(new PortfoliosReturn(this.inputs()).calculate(age)),
-      uv: 3000,
-      pv: 1232,
-      amt: 4211,
+      mutualFundsReturn: _.round(new MutualFundsReturn(this.inputs()).calculate(age)),
     }));
   }
 

@@ -19,11 +19,11 @@ class Chart extends Component {
       <LineChart width={600} height={300} data={data}>
          <XAxis dataKey='age'/>
          <YAxis/>
-         <CartesianGrid strokeDasharray="3 3"/>
+         <CartesianGrid strokeDasharray='3 3'/>
          <Tooltip/>
          <Legend />
-         <Line type="monotone" dataKey="portfoliosReturn" stroke="#8884d8" activeDot={{r: 8}}/>
-         <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+         <Line type='monotone' dataKey='portfoliosReturn' stroke='#8884d8' activeDot={{r: 8}}/>
+         <Line type='monotone' dataKey='mutualFundsReturn' stroke='#82ca9d' />
       </LineChart>
     );
   }
