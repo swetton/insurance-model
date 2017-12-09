@@ -1,6 +1,7 @@
-import _ from 'lodash';
-
 import percentageToDecimal from './percentageToDecimal';
+import pacMinusInsuranceCost from './pacMinusInsuranceCost';
+import initialReturn from './initialReturn';
+import ciReturn from './ciReturn';
 
 export default class PortfoliosReturn {
   constructor(inputs) {
@@ -8,44 +9,10 @@ export default class PortfoliosReturn {
   }
 
   calculate(age) {
-    if (age === this.inputs.currentAge) return this.initialReturn();
+    if (age === this.inputs.currentAge) return initialReturn(this.inputs);
 
     return this.calculate(age - 1) * (1 + (percentageToDecimal(this.inputs.rateOfReturnPercentage) - percentageToDecimal(this.inputs.portfoliosFeesPercentage))) +
-      12 * this.pacMinusInsuranceCost() - this.ciReturn(age);
-  }
-
-  initialReturn() {
-    return this.inputs.initialInvestment + (this.pacMinusInsuranceCost() * 12);
-  }
-
-  pacMinusInsuranceCost() {
-    return this.inputs.pacMonth - this.maybePrimaryCiCost() - this.maybeSecondaryCiCost();
-  }
-
-  maybePrimaryCiCost() {
-    if (!this.inputs.includePrimaryCiInsurance) return 0;
-
-    return this.inputs.primaryCiCost;
-  }
-
-  maybeSecondaryCiCost() {
-    if (!this.inputs.includeSecondaryCiInsurance) return 0;
-
-    return this.inputs.secondaryCiCost;
-  }
-
-  ciReturn(age) {
-    if (age !== this.illnessEventAge()) return 0;
-
-    return this.primaryCiInsuranceReturn() + this.secondaryCiInsuranceReturn();
-  }
-
-  yearsTillRetirement() {
-    return this.inputs.retirementAge - this.inputs.currentAge;
-  }
-
-  illnessEventAge() {
-    return _.floor(this.inputs.currentAge + this.yearsTillRetirement() / 2)
+      12 * pacMinusInsuranceCost(this.inputs) - ciReturn(this.inputs, age, this.primaryCiInsuranceReturn(), this.secondaryCiInsuranceReturn());
   }
 
   primaryCiInsuranceReturn() {
