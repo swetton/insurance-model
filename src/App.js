@@ -14,7 +14,22 @@ class App extends Component {
     return _.range(this.props.inputs.currentAge, this.props.inputs.retirementAge + 1);
   }
 
+  invalidInputs() {
+    const {
+      currentAge,
+      retirementAge,
+    } = this.props.inputs;
+
+    if (!currentAge) return true;
+    if (!retirementAge) return true;
+    if (currentAge > retirementAge) return true;
+
+    return false;
+  }
+
   result() {
+    if (this.invalidInputs()) return [];
+
     return _.map(this.ages(), (age) => ({
       age,
       portfoliosReturn: _.round(new PortfoliosReturn(this.props.inputs).calculate(age)),

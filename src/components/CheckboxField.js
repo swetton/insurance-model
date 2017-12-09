@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
-import numeral from 'numeral';
 
 export default class CheckboxField extends Component {
   render() {

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
-import numeral from 'numeral';
 
-const number = (value) => value && Number(value);
+import normalizeDecimal from '../calculations/normalizeDecimal';
 
 export default class NumberField extends Component {
   render() {
@@ -18,7 +17,7 @@ export default class NumberField extends Component {
           name={name}
           component='input'
           type='text'
-          normalize={number}
+          normalize={normalizeDecimal}
           style={styles.field}
         />
       </div>

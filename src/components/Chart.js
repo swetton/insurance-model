@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import numeral from 'numeral';
 import {
   LineChart,
   Line,
@@ -9,7 +10,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import numeral from 'numeral';
 
 import colors from '../theme/colors';
 
