@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+import FinalChartLabel from './FinalChartLabel';
 import colors from '../theme/colors';
 
 export default class Chart extends Component {
@@ -27,7 +28,7 @@ export default class Chart extends Component {
                name='Age'
                dataKey='age'
                minTickGap={30}
-               padding={{ left: 30, right: 30 }}
+               padding={{ left: 30, right: 80 }}
                interval='preserveStartEnd'
              />
              <YAxis
@@ -40,8 +41,20 @@ export default class Chart extends Component {
              <Legend
                margin={{ top: 20 }}
              />
-             <Line type='monotone' name='Our Plan' dataKey='portfoliosReturn' stroke='#2F5DEA' />
-             <Line type='monotone' name='Mutual Funds' dataKey='mutualFundsReturn' stroke='#E75854' />
+             <Line
+               type='monotone'
+               name='Our Plan'
+               dataKey='portfoliosReturn'
+               stroke='#2F5DEA'
+               label={<FinalChartLabel data={data} />}
+             />
+             <Line
+               type='monotone'
+               name='Mutual Funds'
+               dataKey='mutualFundsReturn'
+               stroke='#E75854'
+               label={<FinalChartLabel data={data} />}
+             />
           </LineChart>
         </ResponsiveContainer>
       </div>
