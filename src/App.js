@@ -15,21 +15,21 @@ class App extends Component {
     return _.range(this.props.inputs.currentAge, this.props.inputs.retirementAge + 1);
   }
 
-  invalidInputs() {
+  inputsValid() {
     const {
       currentAge,
       retirementAge,
     } = this.props.inputs;
 
-    if (!currentAge) return true;
-    if (!retirementAge) return true;
-    if (currentAge > retirementAge) return true;
+    if (!currentAge) return false;
+    if (!retirementAge) return false;
+    if (currentAge > retirementAge) return false;
 
-    return false;
+    return true;
   }
 
   result() {
-    if (this.invalidInputs()) return [];
+    if (!this.inputsValid()) return [];
 
     return _.map(this.ages(), (age) => ({
       age,

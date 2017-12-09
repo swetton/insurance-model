@@ -12,7 +12,9 @@ export default class TextField extends Component {
 
     return (
       <div>
-        <label style={styles.label} htmlFor={name}>{label}</label>
+        <label style={styles.label} htmlFor={name}>
+          {label}
+        </label>
         <Field
           name={name}
           component='input'
