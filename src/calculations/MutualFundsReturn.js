@@ -1,5 +1,7 @@
 import _ from 'lodash';
 
+import percentageToDecimal from './percentageToDecimal';
+
 export default class MutualFundsReturn {
   constructor(inputs) {
     this.inputs = inputs;
@@ -9,7 +11,7 @@ export default class MutualFundsReturn {
     if (age === this.inputs.currentAge) return this.initialReturn();
 
     // diff fees
-    return this.calculate(age - 1) * (1 + (this.inputs.rateOfReturn - this.inputs.mutualFundsFees)) +
+    return this.calculate(age - 1) * (1 + (percentageToDecimal(this.inputs.rateOfReturnPercentage) - percentageToDecimal(this.inputs.mutualFundsFeesPercentage))) +
       12 * this.pacMinusInsuranceCost() - this.ciReturn(age);
   }
 

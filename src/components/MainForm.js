@@ -46,17 +46,17 @@ class MainForm extends Component {
           />
 
           <PercentField
-            name='portfoliosFees'
+            name='portfoliosFeesPercentage'
             label='Portfolios Fees'
           />
 
           <PercentField
-            name='mutualFundsFees'
+            name='mutualFundsFeesPercentage'
             label='Mutual Fund Fees'
           />
 
           <PercentField
-            name='rateOfReturn'
+            name='rateOfReturnPercentage'
             label='Avg Rate of Return'
           />
         </div>
@@ -96,9 +96,9 @@ export default reduxForm({
     primaryIllness: true,
     secondaryCiAmount: 92000,
     secondaryIllness: true,
-    rateOfReturn: 0.05,
-    portfoliosFees: 0.005,
-    mutualFundsFees: 0.023,
+    rateOfReturnPercentage: 5,
+    portfoliosFeesPercentage: 0.5,
+    mutualFundsFeesPercentage: 2.3,
     includePrimaryCiInsurance: true,
     primaryCiCost: 33,
     includeSecondaryCiInsurance: true,

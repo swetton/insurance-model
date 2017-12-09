@@ -19,6 +19,7 @@ export default class NumberField extends Component {
           component='input'
           type='text'
           normalize={number}
+          style={styles.field}
         />
       </div>
     );
@@ -26,10 +27,13 @@ export default class NumberField extends Component {
 }
 
 const styles = {
-  container: {
-  },
   label: {
     width: '140px',
     display: 'inline-block',
+  },
+  field: {
+    textAlign: 'right',
+    width: '80px',
+    fontSize: '14px',
   },
 };

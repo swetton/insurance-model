@@ -56,7 +56,6 @@ const styles = {
     maxWidth: '900px',
     height: '60vh',
     margin: '0 auto',
-    // padding: '20px 10px 10px 0',
     padding: '20px',
     border: `1px solid ${colors.grey}`,
   },

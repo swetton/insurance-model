@@ -1,5 +1,7 @@
 import _ from 'lodash';
 
+import percentageToDecimal from './percentageToDecimal';
+
 export default class PortfoliosReturn {
   constructor(inputs) {
     this.inputs = inputs;
@@ -8,7 +10,7 @@ export default class PortfoliosReturn {
   calculate(age) {
     if (age === this.inputs.currentAge) return this.initialReturn();
 
-    return this.calculate(age - 1) * (1 + (this.inputs.rateOfReturn - this.inputs.portfoliosFees)) +
+    return this.calculate(age - 1) * (1 + (percentageToDecimal(this.inputs.rateOfReturnPercentage) - percentageToDecimal(this.inputs.portfoliosFeesPercentage))) +
       12 * this.pacMinusInsuranceCost() - this.ciReturn(age);
   }
 
