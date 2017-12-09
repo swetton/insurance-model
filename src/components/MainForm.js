@@ -3,9 +3,7 @@ import { reduxForm } from 'redux-form';
 
 import colors from '../theme/colors';
 
-import CurrencyField from './CurrencyField';
-import NumberField from './NumberField';
-import PercentField from './PercentField';
+import TextField from './TextField';
 import CheckboxField from './CheckboxField';
 
 class MainForm extends Component {
@@ -13,51 +11,58 @@ class MainForm extends Component {
     return (
       <div style={styles.container}>
         <div style={styles.column}>
-          <CurrencyField
+          <TextField
             name='initialInvestment'
             label='Initial Investment'
+            suffix='$'
           />
 
-          <CurrencyField
+          <TextField
             name='pacMonth'
             label='PAC / Month'
+            suffix='$'
           />
 
-          <CurrencyField
+          <TextField
             name='primaryCiAmount'
             label='Primary CI Amount'
+            suffix='$'
           />
 
-          <CurrencyField
+          <TextField
             name='secondaryCiAmount'
             label='Secondary CI Amount'
+            suffix='$'
           />
         </div>
 
         <div style={styles.column}>
-          <NumberField
+          <TextField
             name='currentAge'
             label='Current Age'
           />
 
-          <NumberField
+          <TextField
             name='retirementAge'
             label='Retirement Age'
           />
 
-          <PercentField
+          <TextField
             name='portfoliosFeesPercentage'
             label='Portfolios Fees'
+            suffix='%'
           />
 
-          <PercentField
+          <TextField
             name='mutualFundsFeesPercentage'
             label='Mutual Fund Fees'
+            suffix='%'
           />
 
-          <PercentField
+          <TextField
             name='rateOfReturnPercentage'
             label='Avg Rate of Return'
+            suffix='%'
           />
         </div>
 

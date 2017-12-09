@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
+import colors from '../theme/colors';
 
-export default class NumberField extends Component {
+export default class TextField extends Component {
   render() {
     const {
       name,
       label,
+      suffix,
     } = this.props;
 
     return (
@@ -17,6 +19,9 @@ export default class NumberField extends Component {
           type='text'
           style={styles.field}
         />
+        {suffix && <span style={styles.suffix}>
+          {suffix}
+        </span>}
       </div>
     );
   }
@@ -24,12 +29,17 @@ export default class NumberField extends Component {
 
 const styles = {
   label: {
-    width: '140px',
+    width: '170px',
     display: 'inline-block',
   },
   field: {
     textAlign: 'right',
     width: '80px',
     fontSize: '14px',
+  },
+  suffix: {
+    display: 'inline-block',
+    paddingLeft: '3px',
+    color: colors.grey,
   },
 };
