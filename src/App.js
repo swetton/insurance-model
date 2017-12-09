@@ -62,6 +62,6 @@ const styles = {
     minWidth: '100vw',
   },
   innerContainer: {
-    padding: '20px 50px 50px',
+    padding: '20px',
   },
 };

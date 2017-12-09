@@ -65,7 +65,7 @@ export default class Chart extends Component {
 const styles = {
   container: {
     backgroundColor: colors.white,
-    width: '100%',
+    width: '95%',
     maxWidth: '900px',
     height: '60vh',
     margin: '0 auto',
