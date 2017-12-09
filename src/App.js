@@ -39,7 +39,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div style={styles.container}>
         <div style={styles.innerContainer}>
