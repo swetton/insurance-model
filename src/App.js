@@ -8,6 +8,7 @@ import Chart from './components/Chart';
 import MainForm from './components/MainForm';
 import PortfoliosReturn from './calculations/PortfoliosReturn';
 import MutualFundsReturn from './calculations/MutualFundsReturn';
+import parseNumbersObject from './helpers/parseNumbersObject';
 
 class App extends Component {
   ages() {
@@ -51,7 +52,7 @@ class App extends Component {
 }
 
 export default connect(state => ({
-  inputs: getFormValues('mainForm')(state) || {},
+  inputs: parseNumbersObject(getFormValues('mainForm')(state)),
 }))(App);
 
 const styles = {

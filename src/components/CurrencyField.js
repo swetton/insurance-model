@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import colors from '../theme/colors';
-import normalizeDecimal from '../calculations/normalizeDecimal';
 
 export default class CurrencyField extends Component {
   render() {
@@ -17,7 +16,6 @@ export default class CurrencyField extends Component {
           name={name}
           component='input'
           type='text'
-          normalize={normalizeDecimal}
           style={styles.field}
         />
         <span style={styles.symbol}>

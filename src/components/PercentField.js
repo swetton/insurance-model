@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 
-import normalizeDecimal from '../calculations/normalizeDecimal';
 import colors from '../theme/colors';
 
-export default class NumberField extends Component {
+export default class PercentField extends Component {
   render() {
     const {
       name,
@@ -18,7 +17,6 @@ export default class NumberField extends Component {
           name={name}
           component='input'
           type='text'
-          normalize={normalizeDecimal}
           style={styles.field}
         />
         <span style={styles.symbol}>
