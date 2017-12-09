@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import percentageToDecimal from './percentageToDecimal';
 import pacMinusInsuranceCost from './pacMinusInsuranceCost';
 import initialReturn from './initialReturn';
@@ -13,13 +11,13 @@ export default class MutualFundsReturn {
   calculate(age) {
     if (age === this.inputs.currentAge) return initialReturn(this.inputs);
 
-    // diff fees
+    // difference from PortfoliosReturn here is mutualFundsFeesPercentage variable
     return this.calculate(age - 1) * (1 + (percentageToDecimal(this.inputs.rateOfReturnPercentage) - percentageToDecimal(this.inputs.mutualFundsFeesPercentage))) +
       12 * pacMinusInsuranceCost(this.inputs) - ciReturn(this.inputs, age, this.primaryCiInsuranceReturn(), this.secondaryCiInsuranceReturn());
   }
 
   primaryCiInsuranceReturn() {
-    // diff
+    // difference from PortfoliosReturn here is this missing line:
     // if (this.inputs.includePrimaryCiInsurance) return 0;
     if (!this.inputs.primaryIllness) return 0;
 
@@ -27,7 +25,7 @@ export default class MutualFundsReturn {
   }
 
   secondaryCiInsuranceReturn() {
-    // diff
+    // difference from PortfoliosReturn here is this missing line:
     // if (this.inputs.includeSecondaryCiInsurance) return 0;
     if (!this.inputs.secondaryIllness) return 0;
 
