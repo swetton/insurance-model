@@ -22,7 +22,7 @@ export default class Chart extends Component {
     return (
       <div style={styles.container}>
         <ResponsiveContainer>
-          <LineChart data={data} margin={{ top: 10, right: 10, bottom: 10, left: 50 }}>
+          <LineChart data={data} margin={{ top: 10, right: 10, bottom: 10, left: 20 }}>
              <XAxis
                name='Age'
                dataKey='age'
@@ -53,7 +53,11 @@ const styles = {
   container: {
     backgroundColor: colors.white,
     width: '100%',
+    maxWidth: '900px',
     height: '60vh',
     margin: '0 auto',
+    // padding: '20px 10px 10px 0',
+    padding: '20px',
+    border: `1px solid ${colors.grey}`,
   },
 };

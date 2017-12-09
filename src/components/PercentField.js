@@ -13,7 +13,7 @@ export default class NumberField extends Component {
 
     return (
       <div>
-        <label htmlFor={name}>{label}</label>
+        <label style={styles.label} htmlFor={name}>{label}</label>
         <Field
           name={name}
           component='input'
@@ -27,5 +27,9 @@ export default class NumberField extends Component {
 
 const styles = {
   container: {
+  },
+  label: {
+    width: '140px',
+    display: 'inline-block',
   },
 };

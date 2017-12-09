@@ -11,7 +11,7 @@ export default class CheckboxField extends Component {
 
     return (
       <div>
-        <label htmlFor={name}>{label}</label>
+        <label style={styles.label} htmlFor={name}>{label}</label>
         <Field
           name={name}
           component='input'
@@ -24,5 +24,9 @@ export default class CheckboxField extends Component {
 
 const styles = {
   container: {
+  },
+  label: {
+    width: '250px',
+    display: 'inline-block',
   },
 };

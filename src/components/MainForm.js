@@ -12,70 +12,76 @@ class MainForm extends Component {
   render() {
     return (
       <div style={styles.container}>
-        <CurrencyField
-          name='initialInvestment'
-          label='Initial Investment'
-        />
+        <div style={styles.column}>
+          <CurrencyField
+            name='initialInvestment'
+            label='Initial Investment'
+          />
 
-        <CurrencyField
-          name='pacMonth'
-          label='PAC / Month'
-        />
+          <CurrencyField
+            name='pacMonth'
+            label='PAC / Month'
+          />
 
-        <CurrencyField
-          name='primaryCiAmount'
-          label='Primary CI Amount'
-        />
+          <CurrencyField
+            name='primaryCiAmount'
+            label='Primary CI Amount'
+          />
 
-        <CurrencyField
-          name='secondaryCiAmount'
-          label='Secondary CI Amount'
-        />
+          <CurrencyField
+            name='secondaryCiAmount'
+            label='Secondary CI Amount'
+          />
+        </div>
 
-        <NumberField
-          name='currentAge'
-          label='Current Age'
-        />
+        <div style={styles.column}>
+          <NumberField
+            name='currentAge'
+            label='Current Age'
+          />
 
-        <NumberField
-          name='retirementAge'
-          label='Retirement Age'
-        />
+          <NumberField
+            name='retirementAge'
+            label='Retirement Age'
+          />
 
-        <PercentField
-          name='portfoliosFees'
-          label='Portfolios Fees'
-        />
+          <PercentField
+            name='portfoliosFees'
+            label='Portfolios Fees'
+          />
 
-        <PercentField
-          name='mutualFundsFees'
-          label='Mutual Fund Fees'
-        />
+          <PercentField
+            name='mutualFundsFees'
+            label='Mutual Fund Fees'
+          />
 
-        <PercentField
-          name='rateOfReturn'
-          label='Avg Rate of Return'
-        />
+          <PercentField
+            name='rateOfReturn'
+            label='Avg Rate of Return'
+          />
+        </div>
 
-        <CheckboxField
-          name='includePrimaryCiInsurance'
-          label='Include Primary CI Insurance'
-        />
+        <div style={styles.column}>
+          <CheckboxField
+            name='includePrimaryCiInsurance'
+            label='Include Primary CI Insurance'
+          />
 
-        <CheckboxField
-          name='includeSecondaryCiInsurance'
-          label='Include Secondary CI Insurance'
-        />
+          <CheckboxField
+            name='includeSecondaryCiInsurance'
+            label='Include Secondary CI Insurance'
+          />
 
-        <CheckboxField
-          name='primaryIllness'
-          label='Primary Illness'
-        />
+          <CheckboxField
+            name='primaryIllness'
+            label='Primary Illness'
+          />
 
-        <CheckboxField
-          name='secondaryIllness'
-          label='Secondary Illness'
-        />
+          <CheckboxField
+            name='secondaryIllness'
+            label='Secondary Illness'
+          />
+        </div>
       </div>
     );
   }
@@ -105,6 +111,13 @@ export default reduxForm({
 const styles = {
   container: {
     backgroundColor: colors.white,
-    margin: '0 auto',
+    margin: '10px auto 0',
+    maxWidth: '900px',
+    padding: '20px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    border: `1px solid ${colors.grey}`,
+  },
+  column: {
   },
 };
