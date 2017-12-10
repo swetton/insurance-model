@@ -67,7 +67,7 @@ const styles = {
     backgroundColor: colors.white,
     width: '95%',
     maxWidth: '900px',
-    height: '60vh',
+    height: '55vh',
     margin: '0 auto',
     padding: '20px',
     border: `1px solid ${colors.grey}`,

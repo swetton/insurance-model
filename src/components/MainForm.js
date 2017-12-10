@@ -34,6 +34,18 @@ class MainForm extends Component {
             label='Secondary CI Amount'
             suffix='$'
           />
+
+          <TextField
+            name='primaryCiCost'
+            label='Primary CI Cost'
+            suffix='$'
+          />
+
+          <TextField
+            name='secondaryCiCost'
+            label='Secondary CI Cost'
+            suffix='$'
+          />
         </div>
 
         <div style={styles.column}>
