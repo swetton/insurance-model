@@ -32,8 +32,8 @@ class App extends Component {
 
     return _.map(this.ages(), (age) => ({
       age,
-      portfoliosReturn: _.round(new Return(this.props.inputs, 'mutualFundsFeesPercentage').calculate(age)),
-      mutualFundsReturn: _.round(new Return(this.props.inputs, 'portfoliosFeesPercentage').calculate(age)),
+      portfoliosReturn: _.round(new Return(this.props.inputs, 'portfoliosFeesPercentage').calculate(age)),
+      mutualFundsReturn: _.round(new Return(this.props.inputs, 'mutualFundsFeesPercentage').calculate(age)),
     }));
   }
 
