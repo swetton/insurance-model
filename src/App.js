@@ -6,8 +6,7 @@ import { connect } from 'react-redux';
 import './theme/App.css';
 import Chart from './components/Chart';
 import MainForm from './components/MainForm';
-import PortfoliosReturn from './calculations/PortfoliosReturn';
-import MutualFundsReturn from './calculations/MutualFundsReturn';
+import Return from './calculations/Return';
 import parseNumbersObject from './helpers/parseNumbersObject';
 
 class App extends Component {
@@ -33,8 +32,8 @@ class App extends Component {
 
     return _.map(this.ages(), (age) => ({
       age,
-      portfoliosReturn: _.round(new PortfoliosReturn(this.props.inputs).calculate(age)),
-      mutualFundsReturn: _.round(new MutualFundsReturn(this.props.inputs).calculate(age)),
+      portfoliosReturn: _.round(new Return(this.props.inputs, 'mutualFundsFeesPercentage').calculate(age)),
+      mutualFundsReturn: _.round(new Return(this.props.inputs, 'portfoliosFeesPercentage').calculate(age)),
     }));
   }
 
