@@ -2,8 +2,10 @@ import percentageToDecimal from './percentageToDecimal';
 import pacMinusInsuranceCost from './pacMinusInsuranceCost';
 import initialReturn from './initialReturn';
 import ciReturn from './ciReturn';
+import primaryCiInsuranceReturn from './primaryCiInsuranceReturn';
+import secondaryCiInsuranceReturn from './secondaryCiInsuranceReturn';
 
-export default class PortfoliosReturn {
+export default class Return {
   constructor(inputs, feesPercentageKey) {
     this.inputs = inputs;
     this.feesPercentageKey = feesPercentageKey;
@@ -16,22 +18,9 @@ export default class PortfoliosReturn {
   calculate(age) {
     if (age === this.inputs.currentAge) return initialReturn(this.inputs);
 
-    return this.calculate(age - 1) * (1 + (percentageToDecimal(this.inputs.rateOfReturnPercentage) - percentageToDecimal(this.feesPercentage()))) +
-      12 * pacMinusInsuranceCost(this.inputs) - ciReturn(this.inputs, age, this.primaryCiInsuranceReturn(), this.secondaryCiInsuranceReturn());
+    return this.calculate(age - 1) *
+      (1 + (percentageToDecimal(this.inputs.rateOfReturnPercentage) - percentageToDecimal(this.feesPercentage()))) +
+      12 * pacMinusInsuranceCost(this.inputs) -
+      ciReturn(this.inputs, age, primaryCiInsuranceReturn(this.inputs), secondaryCiInsuranceReturn(this.inputs));
   }
-
-  primaryCiInsuranceReturn() {
-    if (this.inputs.includePrimaryCiInsurance) return 0;
-    if (!this.inputs.primaryIllness) return 0;
-
-    return this.inputs.primaryCiAmount;
-  }
-
-  secondaryCiInsuranceReturn() {
-    if (this.inputs.includeSecondaryCiInsurance) return 0;
-    if (!this.inputs.secondaryIllness) return 0;
-
-    return this.inputs.secondaryCiAmount;
-  }
-
 }
