@@ -45,7 +45,7 @@ export default class Chart extends Component {
                type='monotone'
                name='Our Plan'
                dataKey='portfoliosReturn'
-               stroke='#2F5DEA'
+               stroke='#16a55a'
                label={<FinalChartLabel data={data} />}
              />
              <Line

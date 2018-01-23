@@ -125,7 +125,7 @@ export default reduxForm({
     secondaryCiAmount: 92000,
     secondaryIllness: true,
     rateOfReturnPercentage: 5,
-    portfoliosFeesPercentage: 0.5,
+    portfoliosFeesPercentage: 0.68,
     mutualFundsFeesPercentage: 2.3,
     includePrimaryCiInsurance: true,
     primaryCiCost: 33,
