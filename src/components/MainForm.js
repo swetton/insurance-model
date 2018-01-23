@@ -6,6 +6,8 @@ import colors from '../theme/colors';
 import TextField from './TextField';
 import CheckboxField from './CheckboxField';
 
+import illnessEventAge from '../calculations/illnessEventAge';
+
 class MainForm extends Component {
   render() {
     return (
@@ -60,6 +62,11 @@ class MainForm extends Component {
           />
 
           <TextField
+            name='illnessEventAge'
+            label='Illness Event Age'
+          />
+
+          <TextField
             name='portfoliosFeesPercentage'
             label='Portfolios Fees'
             suffix='%'
@@ -104,11 +111,15 @@ class MainForm extends Component {
   }
 }
 
+const defaultCurrentAge = 30;
+const defaultRetirementAge = 65;
+
 export default reduxForm({
   form: 'mainForm',
   initialValues: {
-    currentAge: 30,
-    retirementAge: 65,
+    currentAge: defaultCurrentAge,
+    retirementAge: defaultRetirementAge,
+    illnessEventAge: illnessEventAge(defaultCurrentAge, defaultRetirementAge),
     primaryCiAmount: 69000,
     primaryIllness: true,
     secondaryCiAmount: 92000,

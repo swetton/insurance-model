@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
-const yearsTillRetirement = (inputs) => {
-  return inputs.retirementAge - inputs.currentAge;
+const yearsTillRetirement = (currentAge, retirementAge) => {
+  return retirementAge - currentAge;
 };
 
-export default (inputs) => {
-  return _.floor(inputs.currentAge + yearsTillRetirement(inputs) / 2);
+export default (currentAge, retirementAge) => {
+  return _.floor(currentAge + yearsTillRetirement(currentAge, retirementAge) / 2);
 };
