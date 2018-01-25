@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import {
+  reduxForm,
+  formValueSelector,
+  change,
+} from 'redux-form';
+import _ from 'lodash';
 
 import colors from '../theme/colors';
 
@@ -9,6 +15,33 @@ import CheckboxField from './CheckboxField';
 import illnessEventAge from '../calculations/illnessEventAge';
 
 class MainForm extends Component {
+  agesChanged(nextCurrentAge, nextRetirementAge) {
+    return _.toInteger(this.props.currentAge) !== nextCurrentAge ||
+      _.toInteger(this.props.retirementAge) !== nextRetirementAge;
+  }
+
+  agesValid(currentAge, retirementAge) {
+    return currentAge <= retirementAge;
+  }
+
+  illnessEventInRange(currentAge, retirementAge, illnessEventAge) {
+    return _.inRange(illnessEventAge, currentAge, retirementAge + 1)
+  }
+
+  componentWillUpdate(nextProps) {
+    const nextCurrentAge = _.toInteger(nextProps.currentAge);
+    const nextRetirementAge = _.toInteger(nextProps.retirementAge);
+    const nextIllnessEventAge = _.toInteger(nextProps.illnessEventAge);
+
+    if (!this.agesChanged(nextCurrentAge, nextRetirementAge)) return;
+    if (!this.agesValid(nextCurrentAge, nextRetirementAge)) return;
+    if (this.illnessEventInRange(nextCurrentAge, nextRetirementAge,
+      nextIllnessEventAge)) return;
+
+    this.props.dispatch(change('mainForm', 'illnessEventAge',
+      illnessEventAge(nextCurrentAge, nextRetirementAge)));
+  }
+
   render() {
     return (
       <div style={styles.container}>
@@ -114,7 +147,7 @@ class MainForm extends Component {
 const defaultCurrentAge = 30;
 const defaultRetirementAge = 65;
 
-export default reduxForm({
+const ReduxFormOnMainForm = reduxForm({
   form: 'mainForm',
   initialValues: {
     currentAge: defaultCurrentAge,
@@ -135,6 +168,13 @@ export default reduxForm({
     initialInvestment: 75000,
   },
 })(MainForm);
+
+const formSelector = formValueSelector('mainForm');
+export default connect(state => ({
+  currentAge: formSelector(state, 'currentAge'),
+  retirementAge: formSelector(state, 'retirementAge'),
+  illnessEventAge: formSelector(state, 'illnessEventAge'),
+}))(ReduxFormOnMainForm);
 
 const styles = {
   container: {
