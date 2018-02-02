@@ -17,9 +17,11 @@ export default class Return {
 
   calculate(age) {
     if (age === this.inputs.currentAge) return initialReturn(this.inputs);
+    const lastYearsReturn = this.calculate(age - 1);
+    let rate = (1 + (percentageToDecimal(this.inputs.rateOfReturnPercentage) - percentageToDecimal(this.feesPercentage())));
+    if (lastYearsReturn < 0) rate = 1;
 
-    return this.calculate(age - 1) *
-      (1 + (percentageToDecimal(this.inputs.rateOfReturnPercentage) - percentageToDecimal(this.feesPercentage()))) +
+    return lastYearsReturn * rate +
       12 * pacMinusInsuranceCost(this.inputs) -
       ciReturn(this.inputs, age, primaryCiInsuranceReturn(this.inputs), secondaryCiInsuranceReturn(this.inputs));
   }
