@@ -21,6 +21,7 @@ export default class FinalChartLabel extends Component {
         x={x}
         y={y}
         dx={10}
+        dy={1}
         textAnchor='left'
         fontWeight={600}
       >
