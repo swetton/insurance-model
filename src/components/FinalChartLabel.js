@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 
+import isLastDot from '../helpers/isLastDot';
 import formatCurrency from '../helpers/formatCurrency';
 
 export default class FinalChartLabel extends Component {
-  lastDot() {
-    const {
-      data,
-      index
-    } = this.props;
-
-    return _.findLastIndex(data) === index;
-  }
-
   render() {
-    if (!this.lastDot()) return null;
-
     const {
       x,
       y,
       value,
+      data,
+      index,
     } = this.props;
+
+    if (!isLastDot(data, index)) return null;
 
     return (
       <text

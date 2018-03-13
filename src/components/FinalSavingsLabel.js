@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import isLastDot from '../helpers/isLastDot';
 import formatCurrency from '../helpers/formatCurrency';
 
 export default class FinalSavingsLabel extends Component {
@@ -9,15 +9,6 @@ export default class FinalSavingsLabel extends Component {
     this.state = {
       hover: false,
     };
-  }
-
-  lastDot() {
-    const {
-      data,
-      index
-    } = this.props;
-
-    return _.findLastIndex(data) === index;
   }
 
   handleMouseLeave() {
@@ -33,17 +24,19 @@ export default class FinalSavingsLabel extends Component {
   }
 
   render() {
-    if (!this.lastDot()) return null;
-
-    const {
-      hover,
-    } = this.state;
-
     const {
       x: dotX,
       y: dotY,
       value,
+      data,
+      index,
     } = this.props;
+
+    if (!isLastDot(data, index)) return null;
+
+    const {
+      hover,
+    } = this.state;
 
     const x = dotX - 70;
     const y = dotY + 10;
