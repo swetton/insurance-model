@@ -9,9 +9,11 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  LabelList,
 } from 'recharts';
 
 import FinalChartLabel from './FinalChartLabel';
+import FinalSavingsLabel from './FinalSavingsLabel';
 import colors from '../theme/colors';
 
 export default class Chart extends Component {
@@ -46,8 +48,14 @@ export default class Chart extends Component {
                name='Our Plan'
                dataKey='portfoliosReturn'
                stroke='#16a55a'
-               label={<FinalChartLabel data={data} />}
-             />
+               label={<FinalChartLabel data={data} showSavings />}
+             >
+               <LabelList
+                 dataKey="difference"
+                 position="bottom"
+                 content={<FinalSavingsLabel data={data} />}
+               />
+             </Line>
              <Line
                type='monotone'
                name='Mutual Funds'

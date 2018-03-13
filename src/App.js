@@ -30,11 +30,19 @@ class App extends Component {
   result() {
     if (!this.inputsValid()) return [];
 
-    return _.map(this.ages(), (age) => ({
-      age,
-      portfoliosReturn: _.round(new Return(this.props.inputs, 'portfoliosFeesPercentage').calculate(age)),
-      mutualFundsReturn: _.round(new Return(this.props.inputs, 'mutualFundsFeesPercentage').calculate(age)),
-    }));
+    return _.map(this.ages(), (age) => {
+      const portfoliosReturn = _.round(new Return(this.props.inputs,
+        'portfoliosFeesPercentage').calculate(age));
+      const mutualFundsReturn = _.round(new Return(this.props.inputs,
+        'mutualFundsFeesPercentage').calculate(age));
+
+      return ({
+        age,
+        portfoliosReturn,
+        mutualFundsReturn,
+        difference: portfoliosReturn - mutualFundsReturn,
+      });
+    });
   }
 
   render() {
