@@ -51,8 +51,8 @@ export default class Chart extends Component {
                label={<FinalChartLabel data={data} showSavings />}
              >
                <LabelList
-                 dataKey="difference"
-                 position="bottom"
+                 dataKey='difference'
+                 position='bottom'
                  content={<FinalSavingsLabel data={data} />}
                />
              </Line>
