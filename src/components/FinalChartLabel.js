@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import numeral from 'numeral';
 import _ from 'lodash';
+
+import formatCurrency from '../helpers/formatCurrency';
 
 export default class FinalChartLabel extends Component {
   lastDot() {
@@ -29,7 +30,7 @@ export default class FinalChartLabel extends Component {
         textAnchor='left'
         fontWeight={600}
       >
-        {numeral(value).format('$0,0')}
+        {formatCurrency(value)}
       </text>
     );
   }
