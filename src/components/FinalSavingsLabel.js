@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import isLastDot from '../helpers/isLastDot';
 import formatCurrency from '../helpers/formatCurrency';
 
@@ -40,6 +41,7 @@ export default class FinalSavingsLabel extends Component {
 
     const x = dotX - 70;
     const y = dotY + 10;
+    const savingsNumberLength = _.toString(formatCurrency(value)).length;
 
     return (
       <g
@@ -51,7 +53,7 @@ export default class FinalSavingsLabel extends Component {
           x={x}
           y={y}
           dy={20}
-          width={150}
+          width={75 + savingsNumberLength * 9}
           height={30}
           fill='#fff'
           stroke='#000'

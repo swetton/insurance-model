@@ -25,7 +25,7 @@ export default class Chart extends Component {
     return (
       <div style={styles.container}>
         <ResponsiveContainer>
-          <LineChart data={data} margin={{ top: 10, right: 10, bottom: 10, left: 20 }}>
+          <LineChart data={data} margin={{ top: 10, right: 35, bottom: 10, left: 50 }}>
              <XAxis
                name='Age'
                dataKey='age'
