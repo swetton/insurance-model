@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import colors from '../theme/colors';
+import Icon from './Icon';
 
 export default class TextField extends Component {
   render() {
@@ -13,8 +14,8 @@ export default class TextField extends Component {
     return (
       <Field name={name} component={({ input, meta: { touched, error, active } }) => (
         <div style={styles.container}>
-          <label style={styles.label} htmlFor={name}>
-            {label}
+          <label style={styles.label.container} htmlFor={name}>
+            {label} <Icon type='help' />
           </label>
           <div style={{ ...styles.field.container, ...(active ? styles.field.active : {}) }}>
             <input
@@ -46,10 +47,14 @@ const styles = {
     alignItems: 'center',
   },
   label: {
-    textAlign: 'center',
-    color: colors.almostBlack,
-    fontSize: '13px',
-    fontFamily: 'Lato Medium',
+    container: {
+      textAlign: 'center',
+      color: colors.almostBlack,
+      fontSize: '13px',
+      fontFamily: 'Lato Medium',
+      display: 'flex',
+      alignItems: 'center',
+    },
   },
   field: {
     container: {
