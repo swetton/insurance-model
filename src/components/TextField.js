@@ -11,22 +11,25 @@ export default class TextField extends Component {
     } = this.props;
 
     return (
-      <div style={styles.container}>
-        <label style={styles.label} htmlFor={name}>
-          {label}
-        </label>
-        <div>
-          <Field
-            name={name}
-            component='input'
-            type='text'
-            style={styles.field}
-          />
-          {suffix && <span style={styles.suffix}>
-            {suffix}
-          </span>}
+      <Field name={name} component={({ input, meta: { touched, error, active } }) => (
+        <div style={styles.container}>
+          <label style={styles.label} htmlFor={name}>
+            {label}
+          </label>
+          <div style={{ ...styles.field.container, ...(active ? styles.field.active : {}) }}>
+            <input
+              {...input}
+              placeholder={label}
+              type='text'
+              style={styles.field.input}
+            />
+            {suffix && <span style={styles.field.suffix}>
+              {suffix}
+            </span>}
+          </div>
         </div>
-      </div>
+      )}
+      />
     );
   }
 }
@@ -49,13 +52,28 @@ const styles = {
     fontFamily: 'Lato Medium',
   },
   field: {
-    textAlign: 'right',
-    width: '80px',
-    fontSize: '14px',
-  },
-  suffix: {
-    display: 'inline-block',
-    paddingLeft: '3px',
-    color: colors.grey,
+    container: {
+      width: 'calc(100% - 20px)',
+      display: 'flex',
+      justifyContent: 'center',
+      borderBottom: `1px solid transparent`,
+    },
+    input: {
+      textAlign: 'right',
+      width: '80px',
+      fontSize: '21px',
+      fontWeight: 600,
+      border: 0,
+      outline: 0,
+    },
+    suffix: {
+      display: 'inline-block',
+      paddingLeft: '5px',
+      fontSize: '21px',
+      fontFamily: 'Lato Medium',
+    },
+    active: {
+      borderBottom: `1px solid ${colors.blue}`,
+    },
   },
 };
