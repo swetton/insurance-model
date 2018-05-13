@@ -44,11 +44,14 @@ export default class Chart extends Component {
                minTickGap={30}
                padding={{ left: 30, right: 80 }}
                interval='preserveStartEnd'
+               tickLine={false}
              />
              <YAxis
+               axisLine={{ stroke: colors.haze }}
                tickFormatter={(val) => numeral(val).format('$0,0')}
+               tickLine={false}
              />
-             <CartesianGrid strokeDasharray='3 3'/>
+             <CartesianGrid stroke={colors.haze} vertical={false} />
              <Tooltip
                formatter={(val) => numeral(val).format('$0,0')}
              />

@@ -22,7 +22,7 @@ export default class TextField extends Component {
           <div style={{ ...styles.field.container, ...(active ? styles.field.active : {}) }}>
             <input
               {...input}
-              placeholder={label}
+              placeholder=''
               type='text'
               style={styles.field.input}
             />
