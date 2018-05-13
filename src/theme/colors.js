@@ -6,4 +6,6 @@ export default {
   blue: '#3F85D7',
   lightGrey: '#B8B8B8',
   shadowBlack: 'hsla(190, 5%, 25%, 0.1)',
+  green: '#2CA360',
+  red: '#E16440',
 };

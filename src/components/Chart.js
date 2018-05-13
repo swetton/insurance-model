@@ -16,6 +16,18 @@ import FinalChartLabel from './FinalChartLabel';
 import FinalSavingsLabel from './FinalSavingsLabel';
 import colors from '../theme/colors';
 
+const renderDot = (props) => {
+  const {
+    payload: {
+      age
+    }
+  } = props;
+
+  if (age % 5 > 0) return false;
+
+  return <circle {...props} />
+};
+
 export default class Chart extends Component {
   render() {
     const {
@@ -47,7 +59,9 @@ export default class Chart extends Component {
                type='monotone'
                name='Our Plan'
                dataKey='portfoliosReturn'
-               stroke='#16a55a'
+               stroke={colors.green}
+               strokeWidth={2}
+               dot={renderDot}
                label={<FinalChartLabel data={data} showSavings />}
              >
                <LabelList
@@ -60,7 +74,9 @@ export default class Chart extends Component {
                type='monotone'
                name='Mutual Funds'
                dataKey='mutualFundsReturn'
-               stroke='#E75854'
+               stroke={colors.red}
+               strokeWidth={2}
+               dot={renderDot}
                label={<FinalChartLabel data={data} />}
              />
           </LineChart>
