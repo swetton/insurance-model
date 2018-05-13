@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import CheckboxField from './CheckboxField';
+import colors from '../theme/colors';
 
 export default (props) => (
   <div style={styles.container}>
@@ -28,5 +29,13 @@ export default (props) => (
 
 const styles = {
   container: {
+    display: 'flex',
+    padding: '10px 10px',
+    marginBottom: '2px',
+    backgroundColor: colors.white,
+    // height: '200px',
+    // maxWidth: '60%',
+    // width: '100%',
+    // flexWrap: 'wrap',
   },
 };

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 
+import colors from '../theme/colors';
+
 export default class CheckboxField extends Component {
   render() {
     const {
@@ -9,7 +11,7 @@ export default class CheckboxField extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div style={styles.container}>
         <label style={styles.label} htmlFor={name}>
           {label}
         </label>
@@ -24,8 +26,12 @@ export default class CheckboxField extends Component {
 }
 
 const styles = {
+  container: {
+    padding: '0 5px',
+  },
   label: {
-    width: '250px',
     display: 'inline-block',
+    fontSize: '13px',
+    // fontFamily: 'Lato Medium',
   },
 };
