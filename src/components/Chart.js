@@ -45,11 +45,13 @@ export default class Chart extends Component {
                padding={{ left: 30, right: 80 }}
                interval='preserveStartEnd'
                tickLine={false}
+               tick={styles.tick.regular}
              />
              <YAxis
                axisLine={{ stroke: colors.haze }}
                tickFormatter={(val) => numeral(val).format('$0,0')}
                tickLine={false}
+               tick={{ ...styles.tick.regular, ...styles.tick.age }}
              />
              <CartesianGrid stroke={colors.haze} vertical={false} />
              <Tooltip
@@ -65,14 +67,8 @@ export default class Chart extends Component {
                stroke={colors.green}
                strokeWidth={2}
                dot={renderDot}
-               label={<FinalChartLabel data={data} showSavings />}
-             >
-               <LabelList
-                 dataKey='difference'
-                 position='bottom'
-                 content={<FinalSavingsLabel data={data} />}
-               />
-             </Line>
+               label={<FinalChartLabel data={data} backgroundColor={colors.green} />}
+             />
              <Line
                type='monotone'
                name='Mutual Funds'
@@ -80,7 +76,7 @@ export default class Chart extends Component {
                stroke={colors.red}
                strokeWidth={2}
                dot={renderDot}
-               label={<FinalChartLabel data={data} />}
+               label={<FinalChartLabel data={data} backgroundColor={colors.red} />}
              />
           </LineChart>
         </ResponsiveContainer>
@@ -98,5 +94,14 @@ const styles = {
     // margin: '0 auto',
     padding: '20px',
     // border: `1px solid ${colors.grey}`,
+  },
+  tick: {
+    regular: {
+      fill: colors.darkerGrey,
+      fontSize: '12px',
+    },
+    age: {
+      fill: colors.evenDarkerGrey,
+    },
   },
 };

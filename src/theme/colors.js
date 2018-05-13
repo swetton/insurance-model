@@ -8,4 +8,6 @@ export default {
   shadowBlack: 'hsla(190, 5%, 25%, 0.1)',
   green: '#2CA360',
   red: '#E16440',
+  darkerGrey: '#7B7B7B',
+  evenDarkerGrey: '#6E6E6E',
 };
