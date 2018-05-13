@@ -56,9 +56,13 @@ export default class Chart extends Component {
              <CartesianGrid stroke={colors.haze} vertical={false} />
              <Tooltip
                formatter={(val) => numeral(val).format('$0,0')}
+               wrapperStyle={styles.tooltip.container}
              />
              <Legend
                margin={{ top: 20 }}
+               iconType='circle'
+               iconSize={10}
+               wrapperStyle={styles.legend.container}
              />
              <Line
                type='monotone'
@@ -102,6 +106,23 @@ const styles = {
     },
     age: {
       fill: colors.evenDarkerGrey,
+    },
+  },
+  tooltip: {
+    container: {
+      border: 0,
+      boxShadow: `1px 1px 15px ${colors.shadowBlack}`,
+      borderRadius: '5px',
+    },
+  },
+  legend: {
+    container: {
+      fontSize: '12px',
+      color: colors.almostBlack,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingTop: '10px',
     },
   },
 };
