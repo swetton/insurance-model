@@ -39,10 +39,11 @@ export default class TextField extends Component {
 
 const styles = {
   container: {
-    width: '160px',
+    width: '100%',
+    maxWidth: '165px',
     height: '80px',
     backgroundColor: colors.white,
-    margin: '5px',
+    margin: '0 2px 2px 0',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

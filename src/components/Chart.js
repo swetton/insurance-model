@@ -73,11 +73,11 @@ export default class Chart extends Component {
 const styles = {
   container: {
     backgroundColor: colors.white,
-    width: '95%',
-    maxWidth: '900px',
-    height: '55vh',
-    margin: '0 auto',
+    width: '100%',
+    // maxWidth: '900px',
+    // height: '55vh',
+    // margin: '0 auto',
     padding: '20px',
-    border: `1px solid ${colors.grey}`,
+    // border: `1px solid ${colors.grey}`,
   },
 };

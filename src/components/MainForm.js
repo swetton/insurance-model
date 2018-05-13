@@ -45,7 +45,6 @@ class MainForm extends Component {
   render() {
     return (
       <div style={styles.container}>
-        <div style={styles.column}>
           <TextField
             name='initialInvestment'
             label='Initial Investment'
@@ -81,9 +80,6 @@ class MainForm extends Component {
             label='Secondary CI Cost'
             suffix='$'
           />
-        </div>
-
-        <div style={styles.column}>
           <TextField
             name='currentAge'
             label='Current Age'
@@ -116,9 +112,8 @@ class MainForm extends Component {
             label='Avg Rate of Return'
             suffix='%'
           />
-        </div>
 
-        <div style={styles.column}>
+        {false && <div style={styles.column}>
           <CheckboxField
             name='includePrimaryCiInsurance'
             label='Include Primary CI Insurance'
@@ -138,7 +133,7 @@ class MainForm extends Component {
             name='secondaryIllness'
             label='Secondary Illness'
           />
-        </div>
+        </div>}
       </div>
     );
   }
@@ -178,13 +173,13 @@ export default connect(state => ({
 
 const styles = {
   container: {
-    margin: '10px auto 0',
-    maxWidth: '900px',
-    width: '95%',
-    padding: '20px',
+    // margin: '10px auto 0',
+    // maxWidth: '900px',
+    width: '60%',
+    // maxWidth: '500px',
+    // padding: '20px',
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
   },
   column: {
   },

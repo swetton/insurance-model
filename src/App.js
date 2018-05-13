@@ -49,8 +49,8 @@ class App extends Component {
     return (
       <div style={styles.container}>
         <div style={styles.innerContainer}>
-          <Chart data={this.result()} />
           <MainForm />
+          <Chart data={this.result()} />
         </div>
       </div>
     );
@@ -70,5 +70,9 @@ const styles = {
   },
   innerContainer: {
     padding: '20px',
+    display: 'flex',
+    justifyContent: 'center',
+    maxWidth: '1000px',
+    margin: '0 auto',
   },
 };
