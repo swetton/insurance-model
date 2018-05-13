@@ -11,28 +11,42 @@ export default class TextField extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div style={styles.container}>
         <label style={styles.label} htmlFor={name}>
           {label}
         </label>
-        <Field
-          name={name}
-          component='input'
-          type='text'
-          style={styles.field}
-        />
-        {suffix && <span style={styles.suffix}>
-          {suffix}
-        </span>}
+        <div>
+          <Field
+            name={name}
+            component='input'
+            type='text'
+            style={styles.field}
+          />
+          {suffix && <span style={styles.suffix}>
+            {suffix}
+          </span>}
+        </div>
       </div>
     );
   }
 }
 
 const styles = {
+  container: {
+    width: '160px',
+    height: '80px',
+    backgroundColor: colors.white,
+    margin: '5px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   label: {
-    width: '170px',
-    display: 'inline-block',
+    textAlign: 'center',
+    color: colors.almostBlack,
+    fontSize: '13px',
+    fontFamily: 'Lato Medium',
   },
   field: {
     textAlign: 'right',

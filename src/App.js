@@ -63,10 +63,10 @@ export default connect(state => ({
 
 const styles = {
   container: {
-    backgroundImage: 'url("bg.png")',
-    backgroundSize: 'cover',
-    minHeight: '100vh',
-    minWidth: '100vw',
+    // backgroundImage: 'url("bg.png")',
+    // backgroundSize: 'cover',
+    // minHeight: '100vh',
+    // minWidth: '100vw',
   },
   innerContainer: {
     padding: '20px',

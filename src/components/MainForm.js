@@ -178,7 +178,6 @@ export default connect(state => ({
 
 const styles = {
   container: {
-    backgroundColor: colors.white,
     margin: '10px auto 0',
     maxWidth: '900px',
     width: '95%',
@@ -186,7 +185,6 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    border: `1px solid ${colors.grey}`,
   },
   column: {
   },
