@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import numeral from 'numeral';
+import _ from 'lodash';
 import {
   LineChart,
   Line,
@@ -11,10 +12,14 @@ import {
   ResponsiveContainer,
   LabelList,
 } from 'recharts';
+import { getFormValues } from 'redux-form';
+import { connect } from 'react-redux';
 
 import FinalChartLabel from './FinalChartLabel';
 import FinalSavingsLabel from './FinalSavingsLabel';
 import colors from '../theme/colors';
+import parseNumbersObject from '../helpers/parseNumbersObject';
+import Return from '../calculations/Return';
 
 const renderDot = (props) => {
   const {
@@ -28,16 +33,49 @@ const renderDot = (props) => {
   return <circle {...props} />
 };
 
-export default class Chart extends Component {
-  render() {
+class Chart extends Component {
+  ages() {
+    return _.range(this.props.inputs.currentAge, this.props.inputs.retirementAge + 1);
+  }
+
+  inputsValid() {
+    console.log(this.props);
     const {
-      data,
-    } = this.props;
+      currentAge,
+      retirementAge,
+    } = this.props.inputs;
+
+    if (!currentAge) return false;
+    if (!retirementAge) return false;
+    if (currentAge > retirementAge) return false;
+
+    return true;
+  }
+
+  result() {
+    if (!this.inputsValid()) return [];
+
+    return _.map(this.ages(), (age) => {
+      const portfoliosReturn = _.round(new Return(this.props.inputs,
+        'portfoliosFeesPercentage').calculate(age));
+      const mutualFundsReturn = _.round(new Return(this.props.inputs,
+        'mutualFundsFeesPercentage').calculate(age));
+
+      return ({
+        age,
+        portfoliosReturn,
+        mutualFundsReturn,
+        difference: portfoliosReturn - mutualFundsReturn,
+      });
+    });
+  }
+  render() {
+    const data = this.result();
 
     return (
       <div style={styles.container}>
         <ResponsiveContainer>
-          <LineChart data={data} margin={{ top: 10, right: 35, bottom: 10, left: 50 }}>
+          <LineChart data={data} margin={{ top: 10, right: 10, bottom: 10, left: 0 }}>
              <XAxis
                name='Age'
                dataKey='age'
@@ -89,15 +127,16 @@ export default class Chart extends Component {
   }
 }
 
+export default connect(state => ({
+  inputs: parseNumbersObject(getFormValues('mainForm')(state)),
+}))(Chart);
+
 const styles = {
   container: {
+    height: '100%',
     backgroundColor: colors.white,
-    width: '100%',
-    // maxWidth: '900px',
-    // height: '55vh',
-    // margin: '0 auto',
     padding: '20px',
-    // border: `1px solid ${colors.grey}`,
+    marginBottom: '2px',
   },
   tick: {
     regular: {

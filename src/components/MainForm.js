@@ -10,11 +10,10 @@ import _ from 'lodash';
 import colors from '../theme/colors';
 
 import TextField from './TextField';
-import CheckboxField from './CheckboxField';
 
 import illnessEventAge from '../calculations/illnessEventAge';
 
-class MainForm extends Component {
+export default class MainForm extends Component {
   agesChanged(nextCurrentAge, nextRetirementAge) {
     return _.toInteger(this.props.currentAge) !== nextCurrentAge ||
       _.toInteger(this.props.retirementAge) !== nextRetirementAge;
@@ -112,64 +111,10 @@ class MainForm extends Component {
             label='Avg Rate of Return'
             suffix='%'
           />
-
-        {false && <div style={styles.column}>
-          <CheckboxField
-            name='includePrimaryCiInsurance'
-            label='Include Primary CI Insurance'
-          />
-
-          <CheckboxField
-            name='includeSecondaryCiInsurance'
-            label='Include Secondary CI Insurance'
-          />
-
-          <CheckboxField
-            name='primaryIllness'
-            label='Primary Illness'
-          />
-
-          <CheckboxField
-            name='secondaryIllness'
-            label='Secondary Illness'
-          />
-        </div>}
       </div>
     );
   }
 }
-
-const defaultCurrentAge = 30;
-const defaultRetirementAge = 65;
-
-const ReduxFormOnMainForm = reduxForm({
-  form: 'mainForm',
-  initialValues: {
-    currentAge: defaultCurrentAge,
-    retirementAge: defaultRetirementAge,
-    illnessEventAge: illnessEventAge(defaultCurrentAge, defaultRetirementAge),
-    primaryCiAmount: 69000,
-    primaryIllness: true,
-    secondaryCiAmount: 92000,
-    secondaryIllness: true,
-    rateOfReturnPercentage: 5,
-    portfoliosFeesPercentage: 0.68,
-    mutualFundsFeesPercentage: 2.3,
-    includePrimaryCiInsurance: true,
-    primaryCiCost: 33,
-    includeSecondaryCiInsurance: true,
-    secondaryCiCost: 47,
-    pacMonth: 550,
-    initialInvestment: 75000,
-  },
-})(MainForm);
-
-const formSelector = formValueSelector('mainForm');
-export default connect(state => ({
-  currentAge: formSelector(state, 'currentAge'),
-  retirementAge: formSelector(state, 'retirementAge'),
-  illnessEventAge: formSelector(state, 'illnessEventAge'),
-}))(ReduxFormOnMainForm);
 
 const styles = {
   container: {

@@ -11,7 +11,6 @@ export default class TextField extends Component {
       label,
       suffix,
     } = this.props;
-    console.log(name);
 
     return (
       <Field name={name} component={({ input, meta: { touched, error, active } }) => (
@@ -39,8 +38,7 @@ export default class TextField extends Component {
 
 const styles = {
   container: {
-    width: '100%',
-    maxWidth: '165px',
+    width: 'calc(50% - 2px)',
     height: '80px',
     backgroundColor: colors.white,
     margin: '0 2px 2px 0',
