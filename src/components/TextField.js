@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
+
 import colors from '../theme/colors';
-import Icon from './Icon';
+import HelpIcon from './HelpIcon';
 
 export default class TextField extends Component {
   render() {
@@ -10,12 +11,13 @@ export default class TextField extends Component {
       label,
       suffix,
     } = this.props;
+    console.log(name);
 
     return (
       <Field name={name} component={({ input, meta: { touched, error, active } }) => (
         <div style={styles.container}>
           <label style={styles.label.container} htmlFor={name}>
-            {label} <Icon type='help' />
+            {label} <HelpIcon name={name} />
           </label>
           <div style={{ ...styles.field.container, ...(active ? styles.field.active : {}) }}>
             <input

@@ -5,4 +5,5 @@ export default {
   almostBlack: '#3C4142',
   blue: '#3F85D7',
   lightGrey: '#B8B8B8',
+  shadowBlack: 'hsla(190, 5%, 25%, 0.1)',
 };
