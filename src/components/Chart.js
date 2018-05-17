@@ -70,9 +70,17 @@ class Chart extends Component {
   }
   render() {
     const data = this.result();
+    const {
+      medium,
+    } = this.props;
 
     return (
-      <div style={styles.container}>
+      <div
+        style={{
+          ...styles.container,
+          ...(medium ? styles.medium.container : {}),
+        }}
+      >
         <ResponsiveContainer>
           <LineChart data={data} margin={{ top: 10, right: 10, bottom: 10, left: 0 }}>
              <XAxis
@@ -132,7 +140,7 @@ export default connect(state => ({
 
 const styles = {
   container: {
-    height: 'calc(82px * 6 - 60px - 40px)',
+    height: 'calc(80px * 6 + 2px * 5 - 40px - 40px - 2px)',
     backgroundColor: colors.white,
     padding: '20px',
     marginBottom: '2px',
@@ -161,6 +169,11 @@ const styles = {
       justifyContent: 'center',
       alignItems: 'center',
       paddingTop: '10px',
+    },
+  },
+  medium: {
+    container: {
+      height: 'calc(80px * 6 + 2px * 5 - 40px - 60px - 2px)',
     },
   },
 };

@@ -4,7 +4,12 @@ import CheckboxField from './CheckboxField';
 import colors from '../theme/colors';
 
 export default (props) => (
-  <div style={styles.container}>
+  <div
+    style={{
+      ...styles.container,
+      ...(props.medium ? styles.medium.container : {}),
+    }}
+  >
     <CheckboxField
       name='includePrimaryCiInsurance'
       label='Include Primary CI Insurance'
@@ -34,14 +39,20 @@ export default (props) => (
 const styles = {
   container: {
     display: 'flex',
-    padding: '5px',
+    padding: '0 5px',
     marginBottom: '2px',
     backgroundColor: colors.white,
     justifyContent: 'space-between',
     flexWrap: 'wrap',
+    height: '40px',
     // height: '200px',
     // maxWidth: '60%',
     // width: '100%',
     // flexWrap: 'wrap',
+  },
+  medium: {
+    container: {
+      height: '60px',
+    },
   },
 };
