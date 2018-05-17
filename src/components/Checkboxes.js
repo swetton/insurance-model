@@ -49,10 +49,6 @@ const styles = {
     justifyContent: 'space-between',
     flexWrap: 'wrap',
     height: '40px',
-    // height: '200px',
-    // maxWidth: '60%',
-    // width: '100%',
-    // flexWrap: 'wrap',
   },
   medium: {
     container: {

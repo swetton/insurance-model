@@ -134,11 +134,7 @@ export default Radium(MainForm);
 
 const styles = {
   container: {
-    // margin: '10px auto 0',
-    // maxWidth: '900px',
-    // width: '100%',
     maxWidth: '320px',
-    // padding: '20px',
     display: 'flex',
     flexWrap: 'wrap',
     alignContent: 'flex-start',
