@@ -8,6 +8,7 @@ export default (props) => (
     style={{
       ...styles.container,
       ...(props.medium ? styles.medium.container : {}),
+      ...(props.small ? styles.small.container : {}),
     }}
   >
     <CheckboxField
@@ -53,6 +54,12 @@ const styles = {
   medium: {
     container: {
       height: '60px',
+    },
+  },
+  small: {
+    container: {
+      height: '100px',
+      backgroundColor: colors.haze,
     },
   },
 };
