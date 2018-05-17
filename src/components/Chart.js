@@ -133,7 +133,7 @@ export default connect(state => ({
 
 const styles = {
   container: {
-    height: 'calc(100% - 100px)',
+    height: 'calc(82px * 6 - 60px - 40px)',
     backgroundColor: colors.white,
     padding: '20px',
     marginBottom: '2px',

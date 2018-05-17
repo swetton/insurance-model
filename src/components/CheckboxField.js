@@ -3,8 +3,8 @@ import { Field } from 'redux-form';
 
 import colors from '../theme/colors';
 
-const renderCheckbox = ({ label, name, input, input: { checked, onChange } }) => (
-  <div style={styles.container} {...input} onClick={() => onChange(!checked)}>
+const renderCheckbox = ({ label, name, input, input: { checked, onChange }, disabled }) => (
+  <div style={styles.container} {...input} onClick={() => !disabled && onChange(!checked)}>
     <label style={styles.label} htmlFor={name}>
       {label}
     </label>
@@ -14,7 +14,7 @@ const renderCheckbox = ({ label, name, input, input: { checked, onChange } }) =>
         type='checkbox'
         style={styles.checkbox.component}
       />
-      <div style={styles.checkbox.box} />
+      <div style={{ ...styles.checkbox.box, ...(disabled ? styles.checkbox.disabled : {}) }} />
       {checked && <div style={styles.checkbox.mark} />}
     </div>
   </div>
@@ -69,6 +69,9 @@ const styles = {
       border: 'solid white',
       borderWidth: '0 2px 2px 0',
       transform: 'rotate(45deg)',
+    },
+    disabled: {
+      backgroundColor: colors.disabledGrey,
     },
   },
 };

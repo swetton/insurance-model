@@ -10,4 +10,5 @@ export default {
   red: '#E16440',
   darkerGrey: '#7B7B7B',
   evenDarkerGrey: '#6E6E6E',
+  disabledGrey: '#DADADA',
 };

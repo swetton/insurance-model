@@ -44,73 +44,73 @@ export default class MainForm extends Component {
   render() {
     return (
       <div style={styles.container}>
-          <TextField
-            name='initialInvestment'
-            label='Initial Investment'
-            suffix='$'
-          />
+        <TextField
+          name='initialInvestment'
+          label='Initial Investment'
+          suffix='$'
+        />
 
-          <TextField
-            name='pacMonth'
-            label='PAC / Month'
-            suffix='$'
-          />
+        <TextField
+          name='pacMonth'
+          label='PAC / Month'
+          suffix='$'
+        />
 
-          <TextField
-            name='primaryCiAmount'
-            label='Primary CI Amount'
-            suffix='$'
-          />
+        <TextField
+          name='primaryCiAmount'
+          label='Primary CI Amount'
+          suffix='$'
+        />
 
-          <TextField
-            name='secondaryCiAmount'
-            label='Secondary CI Amount'
-            suffix='$'
-          />
+        <TextField
+          name='secondaryCiAmount'
+          label='Secondary CI Amount'
+          suffix='$'
+        />
 
-          <TextField
-            name='primaryCiCost'
-            label='Primary CI Cost'
-            suffix='$'
-          />
+        <TextField
+          name='primaryCiCost'
+          label='Primary CI Cost'
+          suffix='$'
+        />
 
-          <TextField
-            name='secondaryCiCost'
-            label='Secondary CI Cost'
-            suffix='$'
-          />
-          <TextField
-            name='currentAge'
-            label='Current Age'
-          />
+        <TextField
+          name='secondaryCiCost'
+          label='Secondary CI Cost'
+          suffix='$'
+        />
+        <TextField
+          name='currentAge'
+          label='Current Age'
+        />
 
-          <TextField
-            name='retirementAge'
-            label='Retirement Age'
-          />
+        <TextField
+          name='retirementAge'
+          label='Retirement Age'
+        />
 
-          <TextField
-            name='illnessEventAge'
-            label='Illness Event Age'
-          />
+        <TextField
+          name='illnessEventAge'
+          label='Illness Event Age'
+        />
 
-          <TextField
-            name='portfoliosFeesPercentage'
-            label='Portfolios Fees'
-            suffix='%'
-          />
+        <TextField
+          name='portfoliosFeesPercentage'
+          label='Portfolios Fees'
+          suffix='%'
+        />
 
-          <TextField
-            name='mutualFundsFeesPercentage'
-            label='Mutual Fund Fees'
-            suffix='%'
-          />
+        <TextField
+          name='mutualFundsFeesPercentage'
+          label='Mutual Fund Fees'
+          suffix='%'
+        />
 
-          <TextField
-            name='rateOfReturnPercentage'
-            label='Avg Rate of Return'
-            suffix='%'
-          />
+        <TextField
+          name='rateOfReturnPercentage'
+          label='Avg Rate of Return'
+          suffix='%'
+        />
       </div>
     );
   }
@@ -125,6 +125,7 @@ const styles = {
     // padding: '20px',
     display: 'flex',
     flexWrap: 'wrap',
+    alignContent: 'flex-start',
   },
   column: {
   },
