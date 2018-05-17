@@ -1,5 +1,6 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
+import Radium from 'radium';
 
 import colors from '../theme/colors';
 import Icon from './Icon';
@@ -19,7 +20,7 @@ const CONTENT = {
   rateOfReturnPercentage: 'Depending on your risk tolerance, your investment performance will vary over time.  Typical rate of return is between 2% and 6%. ',
 };
 
-export default ({ name, label, small, tooltipUp }) => (
+const HelpIcon = ({ name, label, small, tooltipUp }) => (
   <Popup
     contentStyle={styles.modal.content}
     trigger={<Icon type='help' />}
@@ -37,18 +38,15 @@ export default ({ name, label, small, tooltipUp }) => (
         {small && <div style={styles.modal.headline}>
           {label}
         </div>}
-        <div
-          style={{
-            ...styles.modal.description,
-            ...(small ? styles.small.modal.description : {}),
-          }}
-        >
+        <div style={[styles.modal.description, small && styles.small.modal.description]}>
           {CONTENT[name]}
         </div>
       </div>
     )}
   </Popup>
 );
+
+export default Radium(HelpIcon);
 
 const styles = {
   modal: {

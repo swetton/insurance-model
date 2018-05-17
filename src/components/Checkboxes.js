@@ -1,15 +1,16 @@
 import React from 'react';
+import Radium from 'radium';
 
 import CheckboxField from './CheckboxField';
 import colors from '../theme/colors';
 
-export default (props) => (
+const Checkboxes = (props) => (
   <div
-    style={{
-      ...styles.container,
-      ...(props.medium ? styles.medium.container : {}),
-      ...(props.small ? styles.small.container : {}),
-    }}
+    style={[
+      styles.container,
+      props.medium && styles.medium.container,
+      props.small && styles.small.container,
+    ]}
   >
     <CheckboxField
       name='includePrimaryCiInsurance'
@@ -36,6 +37,8 @@ export default (props) => (
     />
   </div>
 );
+
+export default Radium(Checkboxes);
 
 const styles = {
   container: {

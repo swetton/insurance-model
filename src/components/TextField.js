@@ -1,46 +1,45 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Field } from 'redux-form';
+import Radium from 'radium';
 
 import colors from '../theme/colors';
 import HelpIcon from './HelpIcon';
 
-export default class TextField extends Component {
-  render() {
-    const {
-      name,
-      label,
-      suffix,
-      verySmall,
-      small,
-    } = this.props;
+export default (props) => {
+  const {
+    name,
+    label,
+    suffix,
+    verySmall,
+    small,
+  } = props;
 
-    return (
-      <Field name={name} component={({ input, meta: { touched, error, active } }) => (
-        <div style={{
-          ...styles.container,
-          ...(small ? styles.small.container : {}),
-          ...(verySmall ? styles.verySmall.container : {}),
-        }}>
-          <label style={styles.label.container} htmlFor={name}>
-            {label} <HelpIcon {...this.props} />
-          </label>
-          <div style={{ ...styles.field.container, ...(active ? styles.field.active : {}) }}>
-            <input
-              {...input}
-              placeholder=''
-              type='text'
-              style={styles.field.input}
-            />
-            {suffix && <span style={styles.field.suffix}>
-              {suffix}
-            </span>}
-          </div>
+  return (
+    <Field name={name} component={Radium(({ input, meta: { touched, error, active } }) => (
+      <div style={[
+        styles.container,
+        small && styles.small.container,
+        verySmall && styles.verySmall.container,
+      ]}>
+        <label style={styles.label.container} htmlFor={name}>
+          {label} <HelpIcon {...props} />
+        </label>
+        <div style={[styles.field.container, active && styles.field.active]}>
+          <input
+            {...input}
+            placeholder=''
+            type='text'
+            style={styles.field.input}
+          />
+          {suffix && <span style={styles.field.suffix}>
+            {suffix}
+          </span>}
         </div>
-      )}
-      />
-    );
-  }
-}
+      </div>
+    ))}
+    />
+  );
+};
 
 const styles = {
   container: {

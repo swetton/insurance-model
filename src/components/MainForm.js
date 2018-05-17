@@ -3,12 +3,13 @@ import {
   change,
 } from 'redux-form';
 import _ from 'lodash';
+import Radium from 'radium';
 
 import TextField from './TextField';
 
 import illnessEventAge from '../calculations/illnessEventAge';
 
-export default class MainForm extends Component {
+class MainForm extends Component {
   agesChanged(nextCurrentAge, nextRetirementAge) {
     return _.toInteger(this.props.currentAge) !== nextCurrentAge ||
       _.toInteger(this.props.retirementAge) !== nextRetirementAge;
@@ -37,13 +38,12 @@ export default class MainForm extends Component {
   }
 
   render() {
+    const {
+      small,
+    } = this.props;
+
     return (
-      <div
-        style={{
-          ...styles.container,
-          ...(this.props.small ? styles.small.container : {})
-        }}
-      >
+      <div style={[styles.container, small && styles.small.container]}>
         <TextField
           name='initialInvestment'
           label='Initial Investment'
@@ -129,6 +129,8 @@ export default class MainForm extends Component {
     );
   }
 }
+
+export default Radium(MainForm);
 
 const styles = {
   container: {

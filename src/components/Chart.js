@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import numeral from 'numeral';
 import _ from 'lodash';
+import Radium from 'radium';
+import { compose } from 'redux';
 import {
   LineChart,
   Line,
@@ -73,12 +75,7 @@ class Chart extends Component {
     } = this.props;
 
     return (
-      <div
-        style={{
-          ...styles.container,
-          ...(medium ? styles.medium.container : {}),
-        }}
-      >
+      <div style={[styles.container, medium && styles.medium.container]}>
         <ResponsiveContainer>
           <LineChart data={data} margin={{ top: 10, right: 10, bottom: 10, left: 0 }}>
              <XAxis
@@ -132,9 +129,12 @@ class Chart extends Component {
   }
 }
 
-export default connect(state => ({
-  inputs: parseNumbersObject(getFormValues('mainForm')(state)),
-}))(Chart);
+export default compose(
+  connect(state => ({
+    inputs: parseNumbersObject(getFormValues('mainForm')(state)),
+  })),
+  Radium,
+)(Chart);
 
 const styles = {
   container: {

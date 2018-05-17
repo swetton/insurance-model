@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Field } from 'redux-form';
-import windowSize from 'react-window-size';
+import Radium from 'radium';
 
 import colors from '../theme/colors';
 
@@ -15,7 +15,11 @@ const renderCheckbox = ({
     onChange,
   },
 }) => (
-  <div style={{ ...styles.container, ...(medium ? styles.medium.container : {}) }} {...input} onClick={() => !disabled && onChange(!checked)}>
+  <div
+    style={[styles.container, medium && styles.medium.container]}
+    {...input}
+    onClick={() => !disabled && onChange(!checked)}
+  >
     <label style={styles.label} htmlFor={name}>
       {label}
     </label>
@@ -25,25 +29,19 @@ const renderCheckbox = ({
         type='checkbox'
         style={styles.checkbox.component}
       />
-      <div style={{ ...styles.checkbox.box, ...(disabled ? styles.checkbox.disabled : {}) }} />
+      <div style={[styles.checkbox.box, disabled && styles.checkbox.disabled]} />
       {checked && <div style={styles.checkbox.mark} />}
     </div>
   </div>
 );
 
-class CheckboxField extends Component {
-  render() {
-    return (
-      <Field
-        {...this.props}
-        component={renderCheckbox}
-        type='checkbox'
-      />
-    );
-  }
-}
-
-export default windowSize(CheckboxField);
+export default (props) => (
+  <Field
+    {...props}
+    component={Radium(renderCheckbox)}
+    type='checkbox'
+  />
+);
 
 const styles = {
   container: {
@@ -79,7 +77,8 @@ const styles = {
       top: '2px',
       width: '3px',
       height: '6px',
-      border: 'solid white',
+      borderColor: '#fff',
+      borderStyle: 'solid',
       borderWidth: '0 2px 2px 0',
       transform: 'rotate(45deg)',
     },

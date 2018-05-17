@@ -6,6 +6,7 @@ import {
   formValueSelector,
 } from 'redux-form';
 import windowSize from 'react-window-size';
+import Radium from 'radium';
 
 import './theme/App.css';
 import Chart from './components/Chart';
@@ -27,21 +28,13 @@ class App extends Component {
 
     return (
       <div
-        style={{
-          ...styles.container,
-          ...(small ? styles.small.container : {})
-        }}
+        style={[styles.container, small && styles.small.container]}
       >
         <MainForm
           {...this.props}
           {...extraProps}
         />
-        <div
-          style={{
-          ...styles.chartAndCheckboxes,
-          ...(small ? styles.small.chartAndCheckboxes : {}),
-          }}
-        >
+        <div style={[styles.chartAndCheckboxes, small && styles.small.chartAndCheckboxes]}>
           <Checkboxes
             {...this.props}
             {...extraProps}
@@ -88,6 +81,7 @@ export default compose(
     illnessEventAge: formSelector(state, 'illnessEventAge'),
   })),
   windowSize,
+  Radium,
 )(App);
 
 const styles = {
