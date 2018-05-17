@@ -119,6 +119,7 @@ export default class MainForm extends Component {
           name='mutualFundsFeesPercentage'
           label='Mutual Fund Fees'
           suffix='%'
+          tooltipUp
           {...this.props}
         />
 
@@ -126,6 +127,7 @@ export default class MainForm extends Component {
           name='rateOfReturnPercentage'
           label='Avg Rate of Return'
           suffix='%'
+          tooltipUp
           {...this.props}
         />
       </div>
