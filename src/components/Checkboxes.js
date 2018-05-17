@@ -8,21 +8,25 @@ export default (props) => (
     <CheckboxField
       name='includePrimaryCiInsurance'
       label='Include Primary CI Insurance'
+      {...props}
     />
 
     <CheckboxField
       name='includeSecondaryCiInsurance'
       label='Include Secondary CI Insurance'
+      {...props}
     />
 
     <CheckboxField
       name='primaryIllness'
       label='Primary Illness'
+      {...props}
     />
 
     <CheckboxField
       name='secondaryIllness'
       label='Secondary Illness'
+      {...props}
     />
   </div>
 );

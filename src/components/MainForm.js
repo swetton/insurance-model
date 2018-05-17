@@ -43,73 +43,90 @@ export default class MainForm extends Component {
 
   render() {
     return (
-      <div style={styles.container}>
+      <div
+        style={{
+          ...styles.container,
+          ...(this.props.small ? styles.small.container : {})
+        }}
+      >
         <TextField
           name='initialInvestment'
           label='Initial Investment'
           suffix='$'
+          {...this.props}
         />
 
         <TextField
           name='pacMonth'
           label='PAC / Month'
           suffix='$'
+          {...this.props}
         />
 
         <TextField
           name='primaryCiAmount'
           label='Primary CI Amount'
           suffix='$'
+          {...this.props}
         />
 
         <TextField
           name='secondaryCiAmount'
           label='Secondary CI Amount'
           suffix='$'
+          {...this.props}
         />
 
         <TextField
           name='primaryCiCost'
           label='Primary CI Cost'
           suffix='$'
+          {...this.props}
         />
 
         <TextField
           name='secondaryCiCost'
           label='Secondary CI Cost'
           suffix='$'
+          {...this.props}
         />
         <TextField
           name='currentAge'
           label='Current Age'
+          {...this.props}
         />
 
         <TextField
           name='retirementAge'
           label='Retirement Age'
+          {...this.props}
         />
 
         <TextField
           name='illnessEventAge'
           label='Illness Event Age'
+          {...this.props}
         />
 
         <TextField
           name='portfoliosFeesPercentage'
           label='Portfolios Fees'
           suffix='%'
+          {...this.props}
         />
 
         <TextField
           name='mutualFundsFeesPercentage'
           label='Mutual Fund Fees'
           suffix='%'
+          {...this.props}
         />
 
         <TextField
           name='rateOfReturnPercentage'
           label='Avg Rate of Return'
           suffix='%'
+          {...this.props}
         />
       </div>
     );
@@ -120,7 +137,7 @@ const styles = {
   container: {
     // margin: '10px auto 0',
     // maxWidth: '900px',
-    width: '100%',
+    // width: '100%',
     maxWidth: '320px',
     // padding: '20px',
     display: 'flex',
@@ -128,6 +145,9 @@ const styles = {
     alignContent: 'flex-start',
     flexShrink: 0,
   },
-  column: {
+  small: {
+    container: {
+      maxWidth: '100%',
+    },
   },
 };

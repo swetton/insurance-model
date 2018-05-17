@@ -8,14 +8,14 @@ const renderCheckbox = ({
   label,
   name,
   disabled,
-  small,
+  medium,
   input,
   input: {
     checked,
     onChange,
   },
 }) => (
-  <div style={{ ...styles.container, ...(small ? styles.small.container : {}) }} {...input} onClick={() => !disabled && onChange(!checked)}>
+  <div style={{ ...styles.container, ...(medium ? styles.medium.container : {}) }} {...input} onClick={() => !disabled && onChange(!checked)}>
     <label style={styles.label} htmlFor={name}>
       {label}
     </label>
@@ -38,7 +38,6 @@ class CheckboxField extends Component {
         {...this.props}
         component={renderCheckbox}
         type='checkbox'
-        small={this.props.windowWidth < 1150}
       />
     );
   }
@@ -88,7 +87,7 @@ const styles = {
       backgroundColor: colors.disabledGrey,
     },
   },
-  small: {
+  medium: {
     container: {
       width: 'calc(50% - 20px)',
       flexDirection: 'row-reverse',

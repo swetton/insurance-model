@@ -10,11 +10,17 @@ export default class TextField extends Component {
       name,
       label,
       suffix,
+      verySmall,
+      small,
     } = this.props;
 
     return (
       <Field name={name} component={({ input, meta: { touched, error, active } }) => (
-        <div style={styles.container}>
+        <div style={{
+          ...styles.container,
+          ...(small ? styles.small.container : {}),
+          ...(verySmall ? styles.verySmall.container : {}),
+        }}>
           <label style={styles.label.container} htmlFor={name}>
             {label} <HelpIcon name={name} />
           </label>
@@ -80,6 +86,17 @@ const styles = {
     },
     active: {
       borderBottom: `1px solid ${colors.blue}`,
+    },
+  },
+  small: {
+    container: {
+      width: 'calc(100% * 1/3 - 2px)',
+      minWidth: '150px',
+    },
+  },
+  verySmall: {
+    container: {
+      width: 'calc(50% - 2px)',
     },
   },
 };
