@@ -74,7 +74,7 @@ const styles = {
     padding: '20px',
     display: 'flex',
     justifyContent: 'center',
-    maxWidth: '1000px',
+    maxWidth: '1100px',
     margin: '0 auto',
   },
   right: {

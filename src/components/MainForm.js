@@ -120,7 +120,7 @@ const styles = {
   container: {
     // margin: '10px auto 0',
     // maxWidth: '900px',
-    width: '50%',
+    width: '40%',
     // maxWidth: '500px',
     // padding: '20px',
     display: 'flex',

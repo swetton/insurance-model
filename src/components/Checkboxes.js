@@ -30,9 +30,10 @@ export default (props) => (
 const styles = {
   container: {
     display: 'flex',
-    padding: '10px 10px',
+    padding: '10px 15px',
     marginBottom: '2px',
     backgroundColor: colors.white,
+    justifyContent: 'space-between',
     // height: '200px',
     // maxWidth: '60%',
     // width: '100%',
