@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import {
-  reduxForm,
-  formValueSelector,
   change,
 } from 'redux-form';
 import _ from 'lodash';
-
-import colors from '../theme/colors';
 
 import TextField from './TextField';
 

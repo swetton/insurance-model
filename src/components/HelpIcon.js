@@ -51,19 +51,6 @@ export default ({ name, label, small, tooltipUp }) => (
 );
 
 const styles = {
-  tooltip: {
-    overlay: {
-    },
-    content: {
-      backgroundColor: colors.white,
-      color: colors.almostBlack,
-      fontSize: '14px',
-      display: 'block',
-    },
-    arrow: {
-      display: 'none',
-    },
-  },
   modal: {
     content: {
       border: 0,

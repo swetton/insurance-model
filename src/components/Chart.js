@@ -10,13 +10,11 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  LabelList,
 } from 'recharts';
 import { getFormValues } from 'redux-form';
 import { connect } from 'react-redux';
 
 import FinalChartLabel from './FinalChartLabel';
-import FinalSavingsLabel from './FinalSavingsLabel';
 import colors from '../theme/colors';
 import parseNumbersObject from '../helpers/parseNumbersObject';
 import Return from '../calculations/Return';
@@ -30,7 +28,7 @@ const renderDot = (props) => {
 
   if (age % 5 > 0) return false;
 
-  return <circle {...props} />
+  return <circle {..._.omit(props, 'dataKey')} />
 };
 
 class Chart extends Component {

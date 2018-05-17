@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
-import { getFormValues } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import {
   reduxForm,
   formValueSelector,
-  change,
 } from 'redux-form';
 import windowSize from 'react-window-size';
 
 import './theme/App.css';
 import Chart from './components/Chart';
 import MainForm from './components/MainForm';
-import parseNumbersObject from './helpers/parseNumbersObject';
 import illnessEventAge from './calculations/illnessEventAge';
 import Checkboxes from './components/Checkboxes';
 
