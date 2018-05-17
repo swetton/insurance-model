@@ -58,7 +58,7 @@ const styles = {
   },
   small: {
     container: {
-      height: '100px',
+      height: '80px',
       backgroundColor: colors.haze,
     },
   },
