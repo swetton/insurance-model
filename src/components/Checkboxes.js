@@ -1,49 +1,40 @@
 import React, { Component } from 'react';
-import { getFormValues } from 'redux-form';
-import { connect } from 'react-redux';
 
 import CheckboxField from './CheckboxField';
 import colors from '../theme/colors';
 
-const Checkboxes = ({ inputs: { primaryIllness, secondaryIllness } }) => {
-  return (
-    <div style={styles.container}>
-      <CheckboxField
-        name='includePrimaryCiInsurance'
-        label='Include Primary CI Insurance'
-        disabled={!primaryIllness}
-      />
+export default (props) => (
+  <div style={styles.container}>
+    <CheckboxField
+      name='includePrimaryCiInsurance'
+      label='Include Primary CI Insurance'
+    />
 
-      <CheckboxField
-        name='includeSecondaryCiInsurance'
-        label='Include Secondary CI Insurance'
-        disabled={!secondaryIllness}
-      />
+    <CheckboxField
+      name='includeSecondaryCiInsurance'
+      label='Include Secondary CI Insurance'
+    />
 
-      <CheckboxField
-        name='primaryIllness'
-        label='Primary Illness'
-      />
+    <CheckboxField
+      name='primaryIllness'
+      label='Primary Illness'
+    />
 
-      <CheckboxField
-        name='secondaryIllness'
-        label='Secondary Illness'
-      />
-    </div>
-  );
-}
-
-export default connect(state => ({
-  inputs: getFormValues('mainForm')(state),
-}))(Checkboxes);
+    <CheckboxField
+      name='secondaryIllness'
+      label='Secondary Illness'
+    />
+  </div>
+);
 
 const styles = {
   container: {
     display: 'flex',
-    padding: '10px 15px',
+    padding: '5px',
     marginBottom: '2px',
     backgroundColor: colors.white,
     justifyContent: 'space-between',
+    flexWrap: 'wrap',
     // height: '200px',
     // maxWidth: '60%',
     // width: '100%',

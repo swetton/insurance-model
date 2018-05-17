@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
+import windowSize from 'react-window-size';
 
 import colors from '../theme/colors';
 
-const renderCheckbox = ({ label, name, input, input: { checked, onChange }, disabled }) => (
-  <div style={styles.container} {...input} onClick={() => !disabled && onChange(!checked)}>
+const renderCheckbox = ({
+  label,
+  name,
+  disabled,
+  small,
+  input,
+  input: {
+    checked,
+    onChange,
+  },
+}) => (
+  <div style={{ ...styles.container, ...(small ? styles.small.container : {}) }} {...input} onClick={() => !disabled && onChange(!checked)}>
     <label style={styles.label} htmlFor={name}>
       {label}
     </label>
@@ -20,23 +31,26 @@ const renderCheckbox = ({ label, name, input, input: { checked, onChange }, disa
   </div>
 );
 
-export default class CheckboxField extends Component {
+class CheckboxField extends Component {
   render() {
     return (
       <Field
         {...this.props}
         component={renderCheckbox}
         type='checkbox'
+        small={this.props.windowWidth < 1150}
       />
     );
   }
 }
 
+export default windowSize(CheckboxField);
+
 const styles = {
   container: {
     display: 'flex',
     alignItems: 'center',
-    padding: '0 5px',
+    padding: '5px',
   },
   label: {
     fontSize: '13px',
@@ -47,7 +61,7 @@ const styles = {
       display: 'flex',
       width: '13px',
       height: '13px',
-      marginLeft: '10px',
+      margin: '0 10px',
     },
     component: {
       opacity: 0,
@@ -72,6 +86,13 @@ const styles = {
     },
     disabled: {
       backgroundColor: colors.disabledGrey,
+    },
+  },
+  small: {
+    container: {
+      width: 'calc(50% - 20px)',
+      flexDirection: 'row-reverse',
+      justifyContent: 'flex-end',
     },
   },
 };

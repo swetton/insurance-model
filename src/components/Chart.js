@@ -39,7 +39,6 @@ class Chart extends Component {
   }
 
   inputsValid() {
-    console.log(this.props);
     const {
       currentAge,
       retirementAge,

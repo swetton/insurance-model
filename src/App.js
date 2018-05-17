@@ -71,10 +71,10 @@ const styles = {
     // minWidth: '100vw',
   },
   innerContainer: {
-    padding: '20px',
+    // padding: '20px',
     display: 'flex',
     justifyContent: 'center',
-    maxWidth: '1100px',
+    maxWidth: '90vw',
     margin: '0 auto',
   },
   right: {
