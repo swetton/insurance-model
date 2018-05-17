@@ -22,7 +22,7 @@ export default class TextField extends Component {
           ...(verySmall ? styles.verySmall.container : {}),
         }}>
           <label style={styles.label.container} htmlFor={name}>
-            {label} <HelpIcon name={name} />
+            {label} <HelpIcon {...this.props} />
           </label>
           <div style={{ ...styles.field.container, ...(active ? styles.field.active : {}) }}>
             <input

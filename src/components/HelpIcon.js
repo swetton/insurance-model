@@ -1,5 +1,6 @@
 import React from 'react';
 import {Tooltip} from 'react-lightweight-tooltip';
+import Popup from 'reactjs-popup';
 
 import colors from '../theme/colors';
 import Icon from './Icon';
@@ -19,15 +20,37 @@ const CONTENT = {
   rateOfReturnPercentage: 'Depending on your risk tolerance, your investment performance will vary over time.  Typical rate of return is between 2% and 6%. ',
 };
 
-export default ({ name }) => (
-  <Tooltip
-    trigger='click'
-    styles={styles.tooltip}
-    content={CONTENT[name]}
-  >
-    <Icon type='help' />
-  </Tooltip>
-);
+export default ({ name, label, small }) => {
+  if (small) {
+    return (
+      <Popup contentStyle={styles.modal.content} trigger={<Icon type='help' />} modal overlayStyle={styles.modal.overlay}>
+        {close => (
+          <div>
+            <div style={styles.modal.closeContainer}>
+              <Icon type='close' onClick={close} />
+            </div>
+            <div style={styles.modal.headline}>
+              {label}
+            </div>
+            <div style={styles.modal.description}>
+              {CONTENT[name]}
+            </div>
+          </div>
+        )}
+      </Popup>
+    );
+  }
+
+  return (
+    <Tooltip
+      trigger='click'
+      styles={styles.tooltip}
+      content={CONTENT[name]}
+    >
+      <Icon type='help' />
+    </Tooltip>
+  );
+};
 
 const styles = {
   tooltip: {
@@ -45,6 +68,30 @@ const styles = {
     },
     arrow: {
       display: 'none',
+    },
+  },
+  modal: {
+    content: {
+      border: 0,
+      borderRadius: '5px',
+      textAlign: 'left',
+      fontSize: '14px',
+      width: 'calc(100% - 40px)',
+      maxWidth: '300px',
+    },
+    headline: {
+      fontWeight: 600,
+      fontSize: '24px',
+      padding: '20px 20px 10px',
+      textAlign: 'center',
+    },
+    description: {
+      padding: '0 20px 50px',
+      color: colors.evenDarkerGrey,
+    },
+    closeContainer: {
+      textAlign: 'right',
+      padding: '5px',
     },
   },
 };
