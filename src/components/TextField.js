@@ -93,7 +93,7 @@ const styles = {
   verySmall: {
     container: {
       width: 'calc(50% - 2px)',
-      minWidth: '80px',
+      minWidth: 'initial',
     },
   },
 };
