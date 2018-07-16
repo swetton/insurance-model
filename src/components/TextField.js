@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import Radium from 'radium';
+import NumberFormat from 'react-number-format';
 
 import colors from '../theme/colors';
 import HelpIcon from './HelpIcon';
@@ -10,6 +11,8 @@ export default (props) => {
     name,
     label,
     suffix,
+    prefix,
+    thousandSeparator,
     verySmall,
     small,
   } = props;
@@ -25,15 +28,15 @@ export default (props) => {
           {label} <HelpIcon {...props} />
         </label>
         <div style={[styles.field.container, active && styles.field.active]}>
-          <input
+          <NumberFormat
             {...input}
             placeholder=''
             type='text'
+            thousandSeparator={thousandSeparator}
             style={styles.field.input}
+            prefix={prefix && prefix + ' '}
+            suffix={suffix && ' ' + suffix}
           />
-          {suffix && <span style={styles.field.suffix}>
-            {suffix}
-          </span>}
         </div>
       </div>
     ))}
@@ -71,17 +74,11 @@ const styles = {
     },
     input: {
       textAlign: 'right',
-      width: '80px',
+      width: '100%',
       fontSize: '21px',
       fontWeight: 600,
       border: 0,
       outline: 0,
-    },
-    suffix: {
-      display: 'inline-block',
-      paddingLeft: '5px',
-      fontSize: '21px',
-      fontFamily: 'Lato Medium',
     },
     active: {
       borderBottom: `1px solid ${colors.blue}`,

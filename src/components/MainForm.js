@@ -47,42 +47,48 @@ class MainForm extends Component {
         <TextField
           name='initialInvestment'
           label='Initial Investment'
-          suffix='$'
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
 
         <TextField
           name='pacMonth'
           label='PAC / Month'
-          suffix='$'
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
 
         <TextField
           name='primaryCiAmount'
           label='Primary CI Amount'
-          suffix='$'
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
 
         <TextField
           name='secondaryCiAmount'
           label='Secondary CI Amount'
-          suffix='$'
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
 
         <TextField
           name='primaryCiCost'
           label='Primary CI Cost'
-          suffix='$'
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
 
         <TextField
           name='secondaryCiCost'
           label='Secondary CI Cost'
-          suffix='$'
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
         <TextField
