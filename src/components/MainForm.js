@@ -112,14 +112,14 @@ class MainForm extends Component {
         <TextField
           name='portfoliosFeesPercentage'
           label='Portfolios Fees'
-          suffix='%'
+          suffix='％'
           {...this.props}
         />
 
         <TextField
           name='mutualFundsFeesPercentage'
           label='Mutual Fund Fees'
-          suffix='%'
+          suffix='％'
           tooltipUp
           {...this.props}
         />
@@ -127,7 +127,7 @@ class MainForm extends Component {
         <TextField
           name='rateOfReturnPercentage'
           label='Avg Rate of Return'
-          suffix='%'
+          suffix='％'
           tooltipUp
           {...this.props}
         />
