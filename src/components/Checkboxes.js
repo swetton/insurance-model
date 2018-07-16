@@ -10,6 +10,7 @@ const Checkboxes = (props) => (
       styles.container,
       props.medium && styles.medium.container,
       props.small && styles.small.container,
+      props.verySmall && styles.verySmall.container,
     ]}
   >
     <CheckboxField
@@ -59,6 +60,11 @@ const styles = {
     container: {
       height: '80px',
       backgroundColor: colors.haze,
+    },
+  },
+  verySmall: {
+    container: {
+      height: '120px',
     },
   },
 };
