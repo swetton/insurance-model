@@ -106,7 +106,7 @@ class Chart extends Component {
              />
              <Line
                type='monotone'
-               name='Our Plan'
+               name='Planswell Portfolios'
                dataKey='portfoliosReturn'
                stroke={colors.green}
                strokeWidth={2}
