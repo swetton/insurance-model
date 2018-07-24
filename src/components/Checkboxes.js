@@ -33,7 +33,7 @@ const Checkboxes = (props) => (
 
     <CheckboxField
       name='secondaryIllness'
-      label='Show with you getting a critical illness'
+      label='Show with your spouse getting a critical illness'
       {...props}
     />
   </div>
@@ -49,7 +49,7 @@ const styles = {
     backgroundColor: colors.white,
     justifyContent: 'space-between',
     flexWrap: 'wrap',
-    height: '40px',
+    height: '60px',
   },
   medium: {
     container: {
