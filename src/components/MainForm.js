@@ -99,7 +99,7 @@ class MainForm extends Component {
 
         <TextField
           name='retirementAge'
-          label='Your retirement Age'
+          label='Your retirement age'
           {...this.props}
         />
 
