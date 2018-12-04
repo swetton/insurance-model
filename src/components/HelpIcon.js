@@ -13,7 +13,7 @@ const CONTENT = {
   primaryCiCost: 'This is the monthly cost of your critical illness insurance coverage, usually ranging from $15-$70 per month',
   secondaryCiCost: 'This is the monthly cost of your spouses critical illness insurance coverage, usually ranging from $15-$70 per month',
   currentAge: 'Enter your current age here.',
-  retirementAge: 'The age at which  you plan to retire.',
+  retirementAge: 'The age at which you plan to retire.',
   illnessEventAge: 'No one wants a critical illness to happen to them or their spouse. Enter any age here to see what would happen to your investment with and without CI insurance in the event of a critical illness.',
   portfoliosFeesPercentage: 'This is the low percentage of fees we take from your portfolio',
   mutualFundsFeesPercentage: 'This is the percentage of fees a Mutual Fund will take from your portfolio, regardless of whether your investment goes up or down. This may not look like a lot, but you’ll see how it adds up over time',

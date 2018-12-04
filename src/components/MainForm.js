@@ -46,7 +46,7 @@ class MainForm extends Component {
       <div style={[styles.container, small && styles.small.container]}>
         <TextField
           name='initialInvestment'
-          label='Initial Investment'
+          label='Initial investment'
           prefix='$'
           thousandSeparator
           {...this.props}
@@ -54,7 +54,7 @@ class MainForm extends Component {
 
         <TextField
           name='pacMonth'
-          label='PAC / Month'
+          label='Monthly investment'
           prefix='$'
           thousandSeparator
           {...this.props}
@@ -62,7 +62,7 @@ class MainForm extends Component {
 
         <TextField
           name='primaryCiAmount'
-          label='Primary CI Amount'
+          label='Your CI coverage amount'
           prefix='$'
           thousandSeparator
           {...this.props}
@@ -70,7 +70,7 @@ class MainForm extends Component {
 
         <TextField
           name='secondaryCiAmount'
-          label='Secondary CI Amount'
+          label="Your spouses' CI coverage amount"
           prefix='$'
           thousandSeparator
           {...this.props}
@@ -78,7 +78,7 @@ class MainForm extends Component {
 
         <TextField
           name='primaryCiCost'
-          label='Primary CI Cost'
+          label='Primary CI cost'
           prefix='$'
           thousandSeparator
           {...this.props}
@@ -86,39 +86,39 @@ class MainForm extends Component {
 
         <TextField
           name='secondaryCiCost'
-          label='Secondary CI Cost'
+          label='Secondary CI cost'
           prefix='$'
           thousandSeparator
           {...this.props}
         />
         <TextField
           name='currentAge'
-          label='Current Age'
+          label='Your current age'
           {...this.props}
         />
 
         <TextField
           name='retirementAge'
-          label='Retirement Age'
+          label='Your retirement age'
           {...this.props}
         />
 
         <TextField
           name='illnessEventAge'
-          label='Illness Event Age'
+          label='Age at illness event'
           {...this.props}
         />
 
         <TextField
           name='portfoliosFeesPercentage'
-          label='Portfolios Fees'
+          label='Planswell Portfolios fees'
           suffix='％'
           {...this.props}
         />
 
         <TextField
           name='mutualFundsFeesPercentage'
-          label='Mutual Fund Fees'
+          label='Mutual fund fees'
           suffix='％'
           tooltipUp
           {...this.props}
@@ -126,7 +126,7 @@ class MainForm extends Component {
 
         <TextField
           name='rateOfReturnPercentage'
-          label='Avg Rate of Return'
+          label='Rate of return'
           suffix='％'
           tooltipUp
           {...this.props}

@@ -106,7 +106,7 @@ class Chart extends Component {
              />
              <Line
                type='monotone'
-               name='Our Plan'
+               name='Planswell Portfolios'
                dataKey='portfoliosReturn'
                stroke={colors.green}
                strokeWidth={2}
@@ -138,7 +138,7 @@ export default compose(
 
 const styles = {
   container: {
-    height: 'calc(80px * 6 + 2px * 5 - 40px - 40px - 2px)',
+    height: 'calc(80px * 6 + 2px * 5 - 40px - 60px - 2px)',
     backgroundColor: colors.white,
     padding: '20px',
     marginBottom: '2px',
