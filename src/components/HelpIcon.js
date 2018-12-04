@@ -8,8 +8,8 @@ import Icon from './Icon';
 const CONTENT = {
   initialInvestment: 'This is the amount you plan on investing initially.  If you currently have no savings, indicate $0.',
   pacMonth: 'This is the amount you intend to contribute each month.',
-  primaryCiAmount: 'Critical illness insurance coverage typically ranges between $20,000 to $150,000 based on a number of factors.  To find out the precise amount that you and your partner should be covered for, build a financial plan [link], it only takes 3 minutes.',
-  secondaryCiAmount: 'This refers to the critical illness coverage of your spouse.  Coverage typically ranges between $20,000 to $150,000 and is based on a number of factors.  To find out the precise amount that you and your partner should be covered for, build a financial plan [link], it only takes 3 minutes.',
+  primaryCiAmount: "Critical illness insurance coverage typically ranges between $20,000 to $150,000 based on a number of factors.  To find out the precise amount that you and your partner should be covered for, <a href='https://my.planswell.ca/discovery/ORG-InsCalc' target='_blank'>build a financial plan</a>, it only takes 3 minutes.",
+  secondaryCiAmount: "This refers to the critical illness coverage of your spouse.  Coverage typically ranges between $20,000 to $150,000 and is based on a number of factors.  To find out the precise amount that you and your partner should be covered for, <a href='https://my.planswell.ca/discovery/ORG-InsCalc' target='_blank'>build a financial plan</a>, it only takes 3 minutes.",
   primaryCiCost: 'This is the monthly cost of your critical illness insurance coverage, usually ranging from $15-$70 per month',
   secondaryCiCost: 'This is the monthly cost of your spouses critical illness insurance coverage, usually ranging from $15-$70 per month',
   currentAge: 'Enter your current age here.',
@@ -38,9 +38,10 @@ const HelpIcon = ({ name, label, small, tooltipUp }) => (
         {small && <div style={styles.modal.headline}>
           {label}
         </div>}
-        <div style={[styles.modal.description, small && styles.small.modal.description]}>
-          {CONTENT[name]}
-        </div>
+        <div
+          style={[styles.modal.description, small && styles.small.modal.description]}
+          dangerouslySetInnerHTML={{ __html: CONTENT[name] }}
+        />
       </div>
     )}
   </Popup>
