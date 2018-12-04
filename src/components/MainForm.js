@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import {
-  reduxForm,
-  formValueSelector,
   change,
 } from 'redux-form';
 import _ from 'lodash';
-
-import colors from '../theme/colors';
+import Radium from 'radium';
 
 import TextField from './TextField';
-import CheckboxField from './CheckboxField';
 
 import illnessEventAge from '../calculations/illnessEventAge';
 
@@ -43,151 +38,111 @@ class MainForm extends Component {
   }
 
   render() {
+    const {
+      small,
+    } = this.props;
+
     return (
-      <div style={styles.container}>
-        <div style={styles.column}>
-          <TextField
-            name='initialInvestment'
-            label='Initial Investment'
-            suffix='$'
-          />
+      <div style={[styles.container, small && styles.small.container]}>
+        <TextField
+          name='initialInvestment'
+          label='Initial Investment'
+          suffix='$'
+          {...this.props}
+        />
 
-          <TextField
-            name='pacMonth'
-            label='PAC / Month'
-            suffix='$'
-          />
+        <TextField
+          name='pacMonth'
+          label='PAC / Month'
+          suffix='$'
+          {...this.props}
+        />
 
-          <TextField
-            name='primaryCiAmount'
-            label='Primary CI Amount'
-            suffix='$'
-          />
+        <TextField
+          name='primaryCiAmount'
+          label='Primary CI Amount'
+          suffix='$'
+          {...this.props}
+        />
 
-          <TextField
-            name='secondaryCiAmount'
-            label='Secondary CI Amount'
-            suffix='$'
-          />
+        <TextField
+          name='secondaryCiAmount'
+          label='Secondary CI Amount'
+          suffix='$'
+          {...this.props}
+        />
 
-          <TextField
-            name='primaryCiCost'
-            label='Primary CI Cost'
-            suffix='$'
-          />
+        <TextField
+          name='primaryCiCost'
+          label='Primary CI Cost'
+          suffix='$'
+          {...this.props}
+        />
 
-          <TextField
-            name='secondaryCiCost'
-            label='Secondary CI Cost'
-            suffix='$'
-          />
-        </div>
+        <TextField
+          name='secondaryCiCost'
+          label='Secondary CI Cost'
+          suffix='$'
+          {...this.props}
+        />
+        <TextField
+          name='currentAge'
+          label='Current Age'
+          {...this.props}
+        />
 
-        <div style={styles.column}>
-          <TextField
-            name='currentAge'
-            label='Current Age'
-          />
+        <TextField
+          name='retirementAge'
+          label='Retirement Age'
+          {...this.props}
+        />
 
-          <TextField
-            name='retirementAge'
-            label='Retirement Age'
-          />
+        <TextField
+          name='illnessEventAge'
+          label='Illness Event Age'
+          {...this.props}
+        />
 
-          <TextField
-            name='illnessEventAge'
-            label='Illness Event Age'
-          />
+        <TextField
+          name='portfoliosFeesPercentage'
+          label='Portfolios Fees'
+          suffix='%'
+          {...this.props}
+        />
 
-          <TextField
-            name='portfoliosFeesPercentage'
-            label='Portfolios Fees'
-            suffix='%'
-          />
+        <TextField
+          name='mutualFundsFeesPercentage'
+          label='Mutual Fund Fees'
+          suffix='%'
+          tooltipUp
+          {...this.props}
+        />
 
-          <TextField
-            name='mutualFundsFeesPercentage'
-            label='Mutual Fund Fees'
-            suffix='%'
-          />
-
-          <TextField
-            name='rateOfReturnPercentage'
-            label='Avg Rate of Return'
-            suffix='%'
-          />
-        </div>
-
-        <div style={styles.column}>
-          <CheckboxField
-            name='includePrimaryCiInsurance'
-            label='Include Primary CI Insurance'
-          />
-
-          <CheckboxField
-            name='includeSecondaryCiInsurance'
-            label='Include Secondary CI Insurance'
-          />
-
-          <CheckboxField
-            name='primaryIllness'
-            label='Primary Illness'
-          />
-
-          <CheckboxField
-            name='secondaryIllness'
-            label='Secondary Illness'
-          />
-        </div>
+        <TextField
+          name='rateOfReturnPercentage'
+          label='Avg Rate of Return'
+          suffix='%'
+          tooltipUp
+          {...this.props}
+        />
       </div>
     );
   }
 }
 
-const defaultCurrentAge = 30;
-const defaultRetirementAge = 65;
-
-const ReduxFormOnMainForm = reduxForm({
-  form: 'mainForm',
-  initialValues: {
-    currentAge: defaultCurrentAge,
-    retirementAge: defaultRetirementAge,
-    illnessEventAge: illnessEventAge(defaultCurrentAge, defaultRetirementAge),
-    primaryCiAmount: 69000,
-    primaryIllness: true,
-    secondaryCiAmount: 92000,
-    secondaryIllness: true,
-    rateOfReturnPercentage: 5,
-    portfoliosFeesPercentage: 0.68,
-    mutualFundsFeesPercentage: 2.3,
-    includePrimaryCiInsurance: true,
-    primaryCiCost: 33,
-    includeSecondaryCiInsurance: true,
-    secondaryCiCost: 47,
-    pacMonth: 550,
-    initialInvestment: 75000,
-  },
-})(MainForm);
-
-const formSelector = formValueSelector('mainForm');
-export default connect(state => ({
-  currentAge: formSelector(state, 'currentAge'),
-  retirementAge: formSelector(state, 'retirementAge'),
-  illnessEventAge: formSelector(state, 'illnessEventAge'),
-}))(ReduxFormOnMainForm);
+export default Radium(MainForm);
 
 const styles = {
   container: {
-    backgroundColor: colors.white,
-    margin: '10px auto 0',
-    maxWidth: '900px',
-    width: '95%',
-    padding: '20px',
+    maxWidth: '320px',
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    border: `1px solid ${colors.grey}`,
+    alignContent: 'flex-start',
+    flexShrink: 0,
   },
-  column: {
+  small: {
+    container: {
+      maxWidth: '100%',
+    },
   },
 };

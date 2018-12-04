@@ -1,74 +1,112 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
-import { getFormValues } from 'redux-form';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import {
+  reduxForm,
+  formValueSelector,
+} from 'redux-form';
+import windowSize from 'react-window-size';
+import Radium from 'radium';
 
 import './theme/App.css';
 import Chart from './components/Chart';
 import MainForm from './components/MainForm';
-import Return from './calculations/Return';
-import parseNumbersObject from './helpers/parseNumbersObject';
+import illnessEventAge from './calculations/illnessEventAge';
+import Checkboxes from './components/Checkboxes';
 
 class App extends Component {
-  ages() {
-    return _.range(this.props.inputs.currentAge, this.props.inputs.retirementAge + 1);
-  }
-
-  inputsValid() {
-    const {
-      currentAge,
-      retirementAge,
-    } = this.props.inputs;
-
-    if (!currentAge) return false;
-    if (!retirementAge) return false;
-    if (currentAge > retirementAge) return false;
-
-    return true;
-  }
-
-  result() {
-    if (!this.inputsValid()) return [];
-
-    return _.map(this.ages(), (age) => {
-      const portfoliosReturn = _.round(new Return(this.props.inputs,
-        'portfoliosFeesPercentage').calculate(age));
-      const mutualFundsReturn = _.round(new Return(this.props.inputs,
-        'mutualFundsFeesPercentage').calculate(age));
-
-      return ({
-        age,
-        portfoliosReturn,
-        mutualFundsReturn,
-        difference: portfoliosReturn - mutualFundsReturn,
-      });
-    });
-  }
-
   render() {
+    const verySmall = this.props.windowWidth < 460;
+    const small = this.props.windowWidth < 900;
+    const medium = this.props.windowWidth < 1150;
+
+    const extraProps = {
+      verySmall,
+      small,
+      medium,
+    };
+
     return (
-      <div style={styles.container}>
-        <div style={styles.innerContainer}>
-          <Chart data={this.result()} />
-          <MainForm />
+      <div
+        style={[styles.container, small && styles.small.container]}
+      >
+        <MainForm
+          {...this.props}
+          {...extraProps}
+        />
+        <div style={[styles.chartAndCheckboxes, small && styles.small.chartAndCheckboxes]}>
+          <Checkboxes
+            {...this.props}
+            {...extraProps}
+          />
+          <Chart
+            {...this.props}
+            {...extraProps}
+          />
         </div>
       </div>
     );
   }
 }
 
-export default connect(state => ({
-  inputs: parseNumbersObject(getFormValues('mainForm')(state)),
-}))(App);
+const defaultCurrentAge = 30;
+const defaultRetirementAge = 65;
+
+const formSelector = formValueSelector('mainForm');
+export default compose(
+  reduxForm({
+    form: 'mainForm',
+    initialValues: {
+      currentAge: defaultCurrentAge,
+      retirementAge: defaultRetirementAge,
+      illnessEventAge: illnessEventAge(defaultCurrentAge, defaultRetirementAge),
+      primaryCiAmount: 69000,
+      primaryIllness: true,
+      secondaryCiAmount: 92000,
+      secondaryIllness: true,
+      rateOfReturnPercentage: 5,
+      portfoliosFeesPercentage: 0.68,
+      mutualFundsFeesPercentage: 2.3,
+      includePrimaryCiInsurance: true,
+      primaryCiCost: 33,
+      includeSecondaryCiInsurance: true,
+      secondaryCiCost: 47,
+      pacMonth: 550,
+      initialInvestment: 75000,
+    },
+  }),
+  connect(state => ({
+    currentAge: formSelector(state, 'currentAge'),
+    retirementAge: formSelector(state, 'retirementAge'),
+    illnessEventAge: formSelector(state, 'illnessEventAge'),
+  })),
+  windowSize,
+  Radium,
+)(App);
 
 const styles = {
   container: {
-    backgroundImage: 'url("bg.png")',
-    backgroundSize: 'cover',
-    minHeight: '100vh',
-    minWidth: '100vw',
+    display: 'flex',
+    // justifyContent: 'center',
+    // maxWidth: '80vw',
+    // width: '100%',
+    // margin: '0 auto',
   },
-  innerContainer: {
-    padding: '20px',
+  chartAndCheckboxes: {
+    // width: '100%',
+    // width: '500px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    maxWidth: 'calc(100% - 320px)',
+  },
+  small: {
+    container: {
+      flexDirection: 'column-reverse',
+    },
+    chartAndCheckboxes: {
+      flexDirection: 'column-reverse',
+      maxWidth: 'inherit',
+    },
   },
 };
