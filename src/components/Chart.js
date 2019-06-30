@@ -57,13 +57,28 @@ class Chart extends Component {
     return _.map(this.ages(), (age) => {
       const portfoliosReturn = _.round(new Return(this.props.inputs,
         'portfoliosFeesPercentage').calculate(age));
+
+      const potentialPortfoliosReturn = _.round(new Return({
+        ...this.props.inputs,
+        includePrimaryCiInsurance: 1,
+        includeSecondaryCiInsurance: 1,
+      }, 'portfoliosFeesPercentage').calculate(age));
+
       const mutualFundsReturn = _.round(new Return(this.props.inputs,
         'mutualFundsFeesPercentage').calculate(age));
+
+      const potentialMutualFundsReturn = _.round(new Return({
+        ...this.props.inputs,
+        includePrimaryCiInsurance: 1,
+        includeSecondaryCiInsurance: 1,
+      },'mutualFundsFeesPercentage').calculate(age));
 
       return ({
         age,
         portfoliosReturn,
+        potentialPortfoliosReturn,
         mutualFundsReturn,
+        potentialMutualFundsReturn,
         difference: portfoliosReturn - mutualFundsReturn,
       });
     });
@@ -103,7 +118,33 @@ class Chart extends Component {
                iconType='circle'
                iconSize={10}
                wrapperStyle={styles.legend.container}
+               payload={[
+                 {
+                   value: 'Our Plan',
+                 }
+               ]}
              />
+
+             <Line
+               type='monotone'
+               name='Potential'
+               dataKey='potentialPortfoliosReturn'
+               stroke={colors.transparentGrey}
+               strokeWidth={2}
+               dot={renderDot}
+               label={<FinalChartLabel data={data} backgroundColor={colors.transparentGrey} />}
+             />
+
+             <Line
+               type='monotone'
+               name='Potential MF'
+               dataKey='potentialMutualFundsReturn'
+               stroke={colors.transparentGrey}
+               strokeWidth={2}
+               dot={renderDot}
+               label={<FinalChartLabel data={data} backgroundColor={colors.transparentGrey} />}
+             />
+
              <Line
                type='monotone'
                name='Our Plan'
