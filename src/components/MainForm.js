@@ -85,6 +85,7 @@ class MainForm extends Component {
           suffix='$'
           {...this.props}
         />
+
         <TextField
           name='currentAge'
           label='Current Age'

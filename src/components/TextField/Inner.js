@@ -5,13 +5,11 @@ import colors from '../../theme/colors';
 import HelpIcon from '../HelpIcon';
 
 export default Radium(({
-  fieldProps: {
-    input,
-    meta: {
-      touched,
-      error,
-      active,
-    },
+  input,
+  meta: {
+    touched,
+    error,
+    active,
   },
   innerProps: {
     name,

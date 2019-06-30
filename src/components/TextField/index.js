@@ -5,11 +5,7 @@ import Inner from './Inner'
 export default (innerProps) => (
   <Field
     name={innerProps.name}
-    component={(fieldProps) => (
-      <Inner
-        fieldProps={fieldProps}
-        innerProps={innerProps}
-      />
-    )}
+    component={Inner}
+    innerProps={innerProps}
   />
 )
