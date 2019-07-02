@@ -1,13 +1,17 @@
-import React from 'react';
-import { Field } from 'redux-form';
+import React from 'react'
 import Radium from 'radium';
 import NumberFormat from 'react-number-format';
+import colors from '../../theme/colors';
+import HelpIcon from '../HelpIcon';
 
-import colors from '../theme/colors';
-import HelpIcon from './HelpIcon';
-
-export default (props) => {
-  const {
+export default Radium(({
+  input,
+  meta: {
+    touched,
+    error,
+    active,
+  },
+  opts: {
     name,
     label,
     suffix,
@@ -15,34 +19,32 @@ export default (props) => {
     thousandSeparator,
     verySmall,
     small,
-  } = props;
-
-  return (
-    <Field name={name} component={Radium(({ input, meta: { touched, error, active } }) => (
-      <div style={[
-        styles.container,
-        small && styles.small.container,
-        verySmall && styles.verySmall.container,
-      ]}>
-        <label style={styles.label.container} htmlFor={name}>
-          {label} <HelpIcon {...props} />
-        </label>
-        <div style={[styles.field.container, active && styles.field.active]}>
-          <NumberFormat
-            {...input}
-            placeholder=''
-            type='text'
-            thousandSeparator={thousandSeparator}
-            style={styles.field.input}
-            prefix={prefix && prefix + ' '}
-            suffix={suffix && ' ' + suffix}
-          />
-        </div>
-      </div>
-    ))}
-    />
-  );
-};
+  },
+  opts,
+}) => (
+  <div
+    style={[
+      styles.container,
+      small && styles.small.container,
+      verySmall && styles.verySmall.container,
+    ]}
+  >
+    <label style={styles.label.container} htmlFor={name}>
+      {label} <HelpIcon {...opts} />
+    </label>
+    <div style={[styles.field.container, active && styles.field.active]}>
+      <NumberFormat
+        {...input}
+        placeholder=''
+        type='text'
+        thousandSeparator={thousandSeparator}
+        style={styles.field.input}
+        prefix={prefix && prefix + ' '}
+        suffix={suffix && ' ' + suffix}
+      />
+    </div>
+  </div>
+));
 
 const styles = {
   container: {
