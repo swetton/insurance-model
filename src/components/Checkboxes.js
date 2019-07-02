@@ -10,29 +10,30 @@ const Checkboxes = (props) => (
       styles.container,
       props.medium && styles.medium.container,
       props.small && styles.small.container,
+      props.verySmall && styles.verySmall.container,
     ]}
   >
     <CheckboxField
       name='includePrimaryCiInsurance'
-      label='Include Primary CI Insurance'
+      label='Show with your CI insurance included'
       {...props}
     />
 
     <CheckboxField
       name='includeSecondaryCiInsurance'
-      label='Include Secondary CI Insurance'
+      label="Show with your spouse's CI insurance included"
       {...props}
     />
 
     <CheckboxField
       name='primaryIllness'
-      label='Primary Illness'
+      label='Show with you getting a critical illness'
       {...props}
     />
 
     <CheckboxField
       name='secondaryIllness'
-      label='Secondary Illness'
+      label='Show with your spouse getting a critical illness'
       {...props}
     />
   </div>
@@ -48,7 +49,7 @@ const styles = {
     backgroundColor: colors.white,
     justifyContent: 'space-between',
     flexWrap: 'wrap',
-    height: '40px',
+    height: '60px',
   },
   medium: {
     container: {
@@ -59,6 +60,11 @@ const styles = {
     container: {
       height: '80px',
       backgroundColor: colors.haze,
+    },
+  },
+  verySmall: {
+    container: {
+      height: '120px',
     },
   },
 };

@@ -20,6 +20,7 @@ import FinalChartLabel from './FinalChartLabel';
 import colors from '../theme/colors';
 import parseNumbersObject from '../helpers/parseNumbersObject';
 import Return from '../calculations/Return';
+import CustomTooltip from './CustomTooltip';
 
 const renderDot = (props) => {
   const {
@@ -64,7 +65,6 @@ class Chart extends Component {
         age,
         portfoliosReturn,
         mutualFundsReturn,
-        difference: portfoliosReturn - mutualFundsReturn,
       });
     });
   }
@@ -96,7 +96,7 @@ class Chart extends Component {
              <CartesianGrid stroke={colors.haze} vertical={false} />
              <Tooltip
                formatter={(val) => numeral(val).format('$0,0')}
-               wrapperStyle={styles.tooltip.container}
+               content={<CustomTooltip />}
              />
              <Legend
                margin={{ top: 20 }}
@@ -106,7 +106,7 @@ class Chart extends Component {
              />
              <Line
                type='monotone'
-               name='Our Plan'
+               name='Planswell Portfolios'
                dataKey='portfoliosReturn'
                stroke={colors.green}
                strokeWidth={2}
@@ -138,7 +138,7 @@ export default compose(
 
 const styles = {
   container: {
-    height: 'calc(80px * 6 + 2px * 5 - 40px - 40px - 2px)',
+    height: 'calc(80px * 6 + 2px * 5 - 40px - 60px - 2px)',
     backgroundColor: colors.white,
     padding: '20px',
     marginBottom: '2px',
@@ -150,13 +150,6 @@ const styles = {
     },
     age: {
       fill: colors.evenDarkerGrey,
-    },
-  },
-  tooltip: {
-    container: {
-      border: 0,
-      boxShadow: `1px 1px 15px ${colors.shadowBlack}`,
-      borderRadius: '5px',
     },
   },
   legend: {

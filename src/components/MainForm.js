@@ -46,82 +46,88 @@ class MainForm extends Component {
       <div style={[styles.container, small && styles.small.container]}>
         <TextField
           name='initialInvestment'
-          label='Initial Investment'
-          suffix='$'
+          label='Initial investment'
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
 
         <TextField
           name='pacMonth'
-          label='PAC / Month'
-          suffix='$'
+          label='Monthly investment'
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
 
         <TextField
           name='primaryCiAmount'
-          label='Primary CI Amount'
-          suffix='$'
+          label='Your CI coverage amount'
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
 
         <TextField
           name='secondaryCiAmount'
-          label='Secondary CI Amount'
-          suffix='$'
+          label="Your spouses' CI coverage amount"
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
 
         <TextField
           name='primaryCiCost'
-          label='Primary CI Cost'
-          suffix='$'
+          label='Primary CI cost'
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
 
         <TextField
           name='secondaryCiCost'
-          label='Secondary CI Cost'
-          suffix='$'
+          label='Secondary CI cost'
+          prefix='$'
+          thousandSeparator
           {...this.props}
         />
         <TextField
           name='currentAge'
-          label='Current Age'
+          label='Your current age'
           {...this.props}
         />
 
         <TextField
           name='retirementAge'
-          label='Retirement Age'
+          label='Your retirement age'
           {...this.props}
         />
 
         <TextField
           name='illnessEventAge'
-          label='Illness Event Age'
+          label='Age at illness event'
           {...this.props}
         />
 
         <TextField
           name='portfoliosFeesPercentage'
-          label='Portfolios Fees'
-          suffix='%'
+          label='Planswell Portfolios fees'
+          suffix='％'
           {...this.props}
         />
 
         <TextField
           name='mutualFundsFeesPercentage'
-          label='Mutual Fund Fees'
-          suffix='%'
+          label='Mutual fund fees'
+          suffix='％'
           tooltipUp
           {...this.props}
         />
 
         <TextField
           name='rateOfReturnPercentage'
-          label='Avg Rate of Return'
-          suffix='%'
+          label='Rate of return'
+          suffix='％'
           tooltipUp
           {...this.props}
         />
