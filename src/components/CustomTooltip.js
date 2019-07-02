@@ -4,6 +4,17 @@ import _ from 'lodash';
 
 import colors from '../theme/colors';
 
+const INCLUDED = [
+  'Planswell Portfolios',
+  'Mutual Funds',
+]
+
+const filter = (payload) => (
+  _.filter(payload, ({ name }) => (
+    _.includes(INCLUDED, name)
+  ))
+)
+
 class Tooltip extends Component {
   savings() {
     return this.getData('portfoliosReturn').value -
@@ -34,7 +45,7 @@ class Tooltip extends Component {
           Age: {label}
         </div>
 
-        {_.map(payload, ({ name, value, stroke }) => (
+        {_.map(filter(payload), ({ name, value, stroke }) => (
           <div key={name} style={{ ...styles.line, ...{ color: stroke }}}>
             {name}: {formatter(value)}
           </div>
