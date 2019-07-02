@@ -21,7 +21,6 @@ import colors from '../theme/colors';
 import parseNumbersObject from '../helpers/parseNumbersObject';
 import Return from '../calculations/Return';
 import CustomTooltip from './CustomTooltip';
-import CustomLegend from './CustomLegend';
 
 const renderDot = (props) => {
   const {
