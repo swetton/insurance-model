@@ -20,6 +20,7 @@ import FinalChartLabel from './FinalChartLabel';
 import colors from '../theme/colors';
 import parseNumbersObject from '../helpers/parseNumbersObject';
 import Return from '../calculations/Return';
+import CustomTooltip from './CustomTooltip';
 
 const renderDot = (props) => {
   const {
@@ -57,13 +58,28 @@ class Chart extends Component {
     return _.map(this.ages(), (age) => {
       const portfoliosReturn = _.round(new Return(this.props.inputs,
         'portfoliosFeesPercentage').calculate(age));
+
+      const potentialPortfoliosReturn = _.round(new Return({
+        ...this.props.inputs,
+        includePrimaryCiInsurance: 1,
+        includeSecondaryCiInsurance: 1,
+      }, 'portfoliosFeesPercentage').calculate(age));
+
       const mutualFundsReturn = _.round(new Return(this.props.inputs,
         'mutualFundsFeesPercentage').calculate(age));
+
+      const potentialMutualFundsReturn = _.round(new Return({
+        ...this.props.inputs,
+        includePrimaryCiInsurance: 1,
+        includeSecondaryCiInsurance: 1,
+      },'mutualFundsFeesPercentage').calculate(age));
 
       return ({
         age,
         portfoliosReturn,
+        potentialPortfoliosReturn,
         mutualFundsReturn,
+        potentialMutualFundsReturn,
         difference: portfoliosReturn - mutualFundsReturn,
       });
     });
@@ -96,23 +112,53 @@ class Chart extends Component {
              <CartesianGrid stroke={colors.haze} vertical={false} />
              <Tooltip
                formatter={(val) => numeral(val).format('$0,0')}
-               wrapperStyle={styles.tooltip.container}
+               content={<CustomTooltip />}
              />
              <Legend
                margin={{ top: 20 }}
                iconType='circle'
                iconSize={10}
                wrapperStyle={styles.legend.container}
+               payload={[
+                 {
+                   value: 'Planswell Portfolios',
+                   color: colors.green,
+                 },
+                 {
+                   value: 'Mutual Funds',
+                   color: colors.red,
+                 },
+               ]}
              />
+
              <Line
                type='monotone'
-               name='Our Plan'
+               dataKey='potentialPortfoliosReturn'
+               stroke={colors.transparentGrey}
+               strokeWidth={2}
+               dot={renderDot}
+               label={<FinalChartLabel data={data} backgroundColor={colors.transparentGrey} />}
+             />
+
+             <Line
+               type='monotone'
+               dataKey='potentialMutualFundsReturn'
+               stroke={colors.transparentGrey}
+               strokeWidth={2}
+               dot={renderDot}
+               label={<FinalChartLabel data={data} backgroundColor={colors.transparentGrey} />}
+             />
+
+             <Line
+               type='monotone'
+               name='Planswell Portfolios'
                dataKey='portfoliosReturn'
                stroke={colors.green}
                strokeWidth={2}
                dot={renderDot}
                label={<FinalChartLabel data={data} backgroundColor={colors.green} />}
              />
+
              <Line
                type='monotone'
                name='Mutual Funds'
@@ -138,7 +184,7 @@ export default compose(
 
 const styles = {
   container: {
-    height: 'calc(80px * 6 + 2px * 5 - 40px - 40px - 2px)',
+    height: 'calc(80px * 6 + 2px * 5 - 40px - 60px - 2px)',
     backgroundColor: colors.white,
     padding: '20px',
     marginBottom: '2px',
@@ -150,13 +196,6 @@ const styles = {
     },
     age: {
       fill: colors.evenDarkerGrey,
-    },
-  },
-  tooltip: {
-    container: {
-      border: 0,
-      boxShadow: `1px 1px 15px ${colors.shadowBlack}`,
-      borderRadius: '5px',
     },
   },
   legend: {

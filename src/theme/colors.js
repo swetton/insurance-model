@@ -1,6 +1,7 @@
 export default {
   white: '#fff',
   grey: '#666666',
+  transparentGrey: 'hsla(0, 0%, 40%, 0.2)',
   haze: '#F7F8F8',
   almostBlack: '#3C4142',
   blue: '#3F85D7',
