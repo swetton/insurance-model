@@ -6178,9 +6178,10 @@ react@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-reactjs-popup@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/reactjs-popup/-/reactjs-popup-1.1.1.tgz#a0619ba6a309aea379df6e82afc110efea180560"
+reactjs-popup@1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/reactjs-popup/-/reactjs-popup-1.4.1.tgz#d5ec829a0f94d4480144f8c52f71cc73b7941083"
+  integrity sha512-Q1yLwo4X+on6k/45usKuOdmIkJr5TnL+8LUNtFvNLNmGLEdOnZn1uR57iq36E8RrMJc+d+tSGdgo8uaJKkxNNA==
 
 read-all-stream@^3.0.0:
   version "3.1.0"

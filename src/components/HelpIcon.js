@@ -22,6 +22,7 @@ const CONTENT = {
 
 const HelpIcon = ({ name, label, small, tooltipUp }) => (
   <Popup
+    key={small}
     contentStyle={styles.modal.content}
     trigger={<Icon type='help' />}
     overlayStyle={styles.modal.overlay}
