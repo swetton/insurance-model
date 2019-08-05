@@ -38,6 +38,7 @@ class Tooltip extends Component {
     } = this.props;
 
     if (!active) return null;
+    if (!payload) return null;
 
     return (
       <div style={styles.container}>
