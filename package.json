@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "lato-font": "^3.0.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.13",
     "numeral": "^2.0.6",
     "radium": "^0.24.0",
     "react": "^16.2.0",
